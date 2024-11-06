@@ -1,0 +1,58 @@
+header
+    align-items: center
+    display: grid
+    justify-content: space-between
+    grid-template-columns: repeat(3, 33%)
+    width: 80%
+    margin: 0 auto
+
+    .title
+        h1
+            font-family: "bodoniflf", serif
+            font-size: 3rem
+            text-align: center
+
+    nav
+        display: flex
+        flex-wrap: wrap
+
+        .active
+            color: #9C1726
+            border-bottom: solid #9C1726 1px
+
+        a
+            color: black
+            padding: 1rem
+            text-decoration: none
+            border-bottom: solid transparent 1px
+            transition: color ease 0.5s, border-bottom ease 0.5s
+            &:hover
+                color: #9C1726
+                border-bottom: solid #9C1726 1px
+
+    .socialNetworks
+        display: flex
+        justify-content: center
+        gap: 1rem
+        section
+            width: 5%
+            position: relative
+            top: 0px
+            transition: top ease 0.33s
+            &:hover
+                top: -5px
+
+            img
+                width: 100%
+
+main
+    margin: 0 auto
+    min-height: 1000px
+    width: 80%
+
+footer
+    display: flex
+    border-top: solid black 1px
+    justify-content: space-between
+    margin: 0 auto
+    width: 80%

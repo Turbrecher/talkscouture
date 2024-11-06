@@ -1,0 +1,29 @@
+.article
+    background-color: #e6dddd
+    overflow: hidden
+    position: relative
+    top: 0px
+    transition: top ease 0.33s
+    .photo
+        overflow: hidden
+        max-height: 200px
+        width: 100%
+        img
+            width: 100%
+            transition: scale ease 1s
+            &:hover
+                scale: 130%
+    .description
+        max-height: 200px
+        overflow: hidden
+        margin: 1rem
+        text-align: justify
+
+    .time
+        margin: 1rem
+        text-align: right
+        font-style: italic
+
+
+    &:hover
+        top: -10px
