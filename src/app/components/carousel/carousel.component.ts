@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.sass'
 })
@@ -12,18 +13,35 @@ export class CarouselComponent {
 
   ngOnInit() {
 
-    this.interval = this.autoSlide()
+    //this.interval = this.autoSlide()
   }
 
   ngOnDestroy() {
-    clearInterval(this.interval)
+    //clearInterval(this.interval)
   }
 
   constructor() {
   }
 
 
-  autoSlide() {
+  slideRight(){
+      document.getElementsByClassName("images")[0].scrollBy({
+        top:0,
+        left:515,
+        behavior:"smooth"
+      })
+  }
+
+  slideLeft(){
+    document.getElementsByClassName("images")[0].scrollBy({
+      top:0,
+      left:-515,
+      behavior:"smooth"
+    })
+}
+
+
+  autoFade() {
 
     return setInterval(() => {
 

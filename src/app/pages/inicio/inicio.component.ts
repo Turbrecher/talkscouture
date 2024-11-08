@@ -11,5 +11,6 @@ import { CarouselComponent } from "../../components/carousel/carousel.component"
 })
 export class InicioComponent {
   public nArticles = [1, 2, 3, 4, 5, 6]
+  public nArticlesUnordered = [1, 2, 3, 4, 5]
   
 }

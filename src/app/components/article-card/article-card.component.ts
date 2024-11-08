@@ -13,4 +13,5 @@ export class ArticleCardComponent {
   @Input() title: String = "My default title of article"
   @Input() description: String = "Default description of an article"
   @Input() extra: boolean = false
+  @Input() myClass: String = "article"
 }

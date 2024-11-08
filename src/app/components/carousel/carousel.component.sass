@@ -1,30 +1,58 @@
 .carousel
-        height: 400px
-        overflow: hidden
-        display: flex
+        display: grid
         align-items: center
         gap: 1rem
         .images
+            display: grid
+            grid-template-columns: repeat(8,33%)
+            overflow: hidden
             width: 100%
-            .img1, .img2, .img3
-                opacity: 1           
-                display: none
+            gap: 1rem
+
+            a
+                text-decoration: none
+                color: black
+
+            .img1, .img2, .img3, .img4, .img5, .img6
+                display: block
+                position: relative
+                top: 0
+                transition: display 2s ease allow-discrete, opacity ease 2s, top ease 0.5s
+                opacity: 1
                 width: 100%
-                transition: display 2s ease allow-discrete, opacity ease 2s
+                &:hover
+                    top: -30px
+
+                
 
                 img
+                    aspect-ratio: 4/4
                     width: 100%
-                    
-            .active
-                @starting-style
-                    opacity: 0
-                display: block
-                opacity: 1
+                    object-fit: cover
 
-        .next, .previous
-            width: 6rem
-            img
-                width: 100%
-                transition: scale ease 0.33s
+                h1
+                    position: relative
+                    top: -8rem
+                    padding: 2rem
+                    background: white
+                    font-size: 3rem
+                    width: 70%
+                    margin: 0 auto
+                    text-align: center
+        
+        .control
+            position: relative
+            top: -6rem
+            display: flex
+            justify-content: center
+            gap: 2rem
+            button
+                border: solid transparent
+                background:  transparent
+                padding: 0 0.5rem
+                font-size: 3rem
+                transition: scale ease 0.33s, background ease 0.33s
                 &:hover
-                    scale: 110%
+                    scale: 130%
+                    background: #9C1726
+
