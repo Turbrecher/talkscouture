@@ -3,6 +3,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { TheThoughtComponent } from './pages/the-thought/the-thought.component';
 import { DearFashionComponent } from './pages/dear-fashion/dear-fashion.component';
 import { MuchoMasQueAnunciosComponent } from './pages/mucho-mas-que-anuncios/mucho-mas-que-anuncios.component';
+import { ArticleViewComponent } from './pages/article-view/article-view.component';
 
 export const routes: Routes = [
     {
@@ -23,5 +24,10 @@ export const routes: Routes = [
     {
         path:"muchomasqueanuncios",
         component: MuchoMasQueAnunciosComponent
+    },
+
+    {
+        path:"articles/:id",
+        component: ArticleViewComponent
     },
 ];

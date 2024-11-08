@@ -1,0 +1,30 @@
+.carousel
+        height: 400px
+        overflow: hidden
+        display: flex
+        align-items: center
+        gap: 1rem
+        .images
+            width: 100%
+            .img1, .img2, .img3
+                opacity: 1           
+                display: none
+                width: 100%
+                transition: display 2s ease allow-discrete, opacity ease 2s
+
+                img
+                    width: 100%
+                    
+            .active
+                @starting-style
+                    opacity: 0
+                display: block
+                opacity: 1
+
+        .next, .previous
+            width: 6rem
+            img
+                width: 100%
+                transition: scale ease 0.33s
+                &:hover
+                    scale: 110%

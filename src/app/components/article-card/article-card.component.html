@@ -1,13 +1,39 @@
-<article class="article">
-    <section class="photo">
-        <img src="{{photo}}" alt="">
-    </section>
+@if(extra){
+<a routerLink="/articles/1#photo">
+    <article class="extraArticle">
 
-    <section class="description">
-        <p>{{description}}</p>
-    </section>
+        <section class="photo">
+            <img src="{{photo}}" alt="">
+        </section>
 
-    <section class="time">
-        <p>- 2 minutos de lectura -</p>
-    </section>
-</article>
+        <section class="content">
+            <article class="title">
+                <h2>{{title}}</h2>
+            </article>
+
+            <article class="description">
+                <p>{{description}}</p>
+            </article>
+        </section>
+    </article>
+</a>
+}
+
+
+@else {
+<a routerLink="/articles/1#photo">
+    <article class="article">
+        <section class="photo">
+            <img src="{{photo}}" alt="">
+        </section>
+
+        <section class="title">
+            <h2>{{title}}</h2>
+        </section>
+
+        <section class="description">
+            <p>{{description}}</p>
+        </section>
+    </article>
+</a>
+}
