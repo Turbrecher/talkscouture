@@ -1,6 +1,10 @@
 header
     align-items: center
+    background: white
     display: grid
+    position: sticky
+    top: 0
+    z-index: 20
     justify-content: space-between
     grid-template-columns: repeat(3, 33%)
     width: 80%
@@ -26,13 +30,16 @@ header
             text-decoration: none
             border-bottom: solid transparent 1px
             transition: color ease 0.5s, border-bottom ease 0.5s
+            font-family: "bodoniflf", serif
+            font-size: 1.25rem
             &:hover
                 color: #9C1726
                 border-bottom: solid #9C1726 1px
 
     .socialNetworks
+        
         display: flex
-        justify-content: center
+        justify-content: right
         gap: 1rem
         section
             width: 5%

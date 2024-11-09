@@ -12,6 +12,8 @@ export class ArticleCardComponent {
   @Input() photo: String = "images/defaultArticle.jpg"
   @Input() title: String = "My default title of article"
   @Input() description: String = "Default description of an article"
+  @Input() date: String = "25.04.2002"
+  @Input() readTime: String = "3 minutos de lectura"
   @Input() extra: boolean = false
   @Input() myClass: String = "article"
 }

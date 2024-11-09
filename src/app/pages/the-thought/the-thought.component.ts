@@ -9,5 +9,13 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
   styleUrl: './the-thought.component.sass'
 })
 export class TheThoughtComponent {
-  nArticles = [1,2,3,4,5,6,7,8]
+  nArticles = [1,2,3,4,5]
+
+  ngOnInit() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
 }

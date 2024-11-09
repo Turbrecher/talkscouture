@@ -17,22 +17,23 @@ a
             object-fit: cover
             transition: scale ease 1s
             &:hover
-                scale: 130%
+                scale: 110%
 
     .title
         margin: 1rem auto
-
+        h2
+            font-family: "bodoniflf", serif
+            font-style: italic
     .description
-        max-height: 200px
+        max-height: 100px
         overflow: hidden
         text-align: justify
 
 .extraArticle
     display: grid
-    grid-template-areas: "photo content content content content content content content"
+    grid-template-columns: 10% auto
     gap: 1rem
     .photo
-        grid-area: photo
         aspect-ratio: 1/1
         overflow: hidden
         width: 100%
@@ -43,12 +44,17 @@ a
             object-fit: cover
             transition: scale ease 1s
             &:hover
-                scale: 130%
+                scale: 110%
 
     .content
-        grid-area: content
+        margin: 1rem 0
+        display: grid
         .title
-            margin: 1rem auto
+            font-family: "bodoniflf", serif
+            font-size: 2rem
+            font-style: italic
+        .date
+            color: #9C1726
 
         .description
             max-height: 200px
