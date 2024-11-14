@@ -1,9 +1,11 @@
 <article class="dearFashion">
 
     <section class="articles">
-        @for (n of nArticles; track $index) {
-        <app-article-card photo="images/fashion.jpeg"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet metus ut mauris volutpat tincidunt. Aliquam sit amet rutrum nisl. Integer auctor nunc quam, auctor posuere est porttitor nec. Maecenas maximus arcu at ultricies facilisis. Pellentesque at nisl sit amet tellus interdum accumsan vitae a magna. Donec et congue nibh, ut volutpat nibh. Mauris eu eleifend purus, id pretium eros. Nullam et lectus quis ipsum aliquam tincidunt sodales ac neque. Proin efficitur tempor ipsum, ac pharetra purus. Sed a leo consectetur dui volutpat consequat. Phasellus at augue eu felis molestie hendrerit. Nullam eget justo sollicitudin, pulvinar metus viverra, rhoncus ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae" />
+        @for (article of articles; track $index) {
+        <app-article-card [id]="article.id"
+            photo="{{article.photo}}"
+            description="{{article.description}}"
+            title="{{article.title}}" />
         }
     </section>
 

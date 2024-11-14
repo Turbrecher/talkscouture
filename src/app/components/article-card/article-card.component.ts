@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './article-card.component.sass'
 })
 export class ArticleCardComponent {
+  @Input() id: String = "1"
   @Input() photo: String = "images/defaultArticle.jpg"
   @Input() title: String = "My default title of article"
   @Input() description: String = "Default description of an article"

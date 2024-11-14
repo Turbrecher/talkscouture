@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
 
 @Component({
   selector: 'app-carousel',
@@ -10,9 +12,12 @@ import { RouterLink } from '@angular/router';
 })
 export class CarouselComponent {
   private interval: any
+  public carouselArticles !: Array<Article>
 
   ngOnInit() {
-
+    this.articleService.getAllArticlesOnPage(1).subscribe((articles) => {
+      this.carouselArticles = articles.data
+    })
     //this.interval = this.autoSlide()
   }
 
@@ -20,25 +25,25 @@ export class CarouselComponent {
     //clearInterval(this.interval)
   }
 
-  constructor() {
+  constructor(private articleService: ArticleService) {
   }
 
 
-  slideRight(){
-      document.getElementsByClassName("images")[0].scrollBy({
-        top:0,
-        left:515,
-        behavior:"smooth"
-      })
-  }
-
-  slideLeft(){
+  slideRight() {
     document.getElementsByClassName("images")[0].scrollBy({
-      top:0,
-      left:-515,
-      behavior:"smooth"
+      top: 0,
+      left: 515,
+      behavior: "smooth"
     })
-}
+  }
+
+  slideLeft() {
+    document.getElementsByClassName("images")[0].scrollBy({
+      top: 0,
+      left: -515,
+      behavior: "smooth"
+    })
+  }
 
 
   autoFade() {

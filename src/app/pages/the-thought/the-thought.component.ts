@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
+import { ArticleService } from '../../services/article.service';
+import { Article } from '../../models/article';
 
 @Component({
   selector: 'app-the-thought',
@@ -9,13 +11,26 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
   styleUrl: './the-thought.component.sass'
 })
 export class TheThoughtComponent {
-  nArticles = [1,2,3,4,5]
+
+
+  constructor(private articleService: ArticleService) {
+
+  }
+
+  articles !: Array<Article>
 
   ngOnInit() {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
+
+
+    this.articleService.getSectionArticles("The Thought").subscribe((articles) => {
+      this.articles = articles.data
+
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     })
+
   }
 }

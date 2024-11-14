@@ -1,5 +1,5 @@
 @if(extra){
-<a routerLink="/articles/1#photo">
+<a routerLink="/articles/{{id}}">
     <article class="extraArticle">
 
         <section class="photo">
@@ -9,7 +9,7 @@
         <section class="content">
                 <h2 class="title">{{title}}</h2>
                 <h3 class="date">{{date}}</h3>
-                <h3 class="readTime">- {{readTime}} -</h3>
+                <h3 class="readTime">- {{readTime}} minutos de lectura -</h3>
         </section>
     </article>
 </a>
@@ -17,7 +17,7 @@
 
 
 @else {
-<a routerLink="/articles/1#photo">
+<a routerLink="/articles/{{id}}">
     <article class="article">
         <section class="photo">
             <img src="{{photo}}" alt="">
