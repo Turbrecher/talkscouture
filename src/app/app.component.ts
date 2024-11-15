@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ActivatedRoute, ChildrenOutletContexts, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { routeTransition } from './shared/route-transition';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { fadeInScaleAnimation } from './shared/fade-in-scale';
+import { NavComponent } from "./shared/components/nav/nav.component";
+import { RightMenuComponent } from "./shared/components/right-menu/right-menu.component";
+import { HeaderComponent } from "./shared/components/header/header.component";
+import { FooterComponent } from "./shared/components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
   animations: [
@@ -16,9 +18,12 @@ import { fadeInScaleAnimation } from './shared/fade-in-scale';
   ]
 })
 export class AppComponent {
-  title = 'talkscouture';
 
-  constructor(protected route: ActivatedRoute) {
+  constructor(protected route: ActivatedRoute, protected router:Router) {
+  }
+
+  ngOnInit(){
+    //this.router.navigate(['inicio'])
   }
 
   getRouteAnimationData() {

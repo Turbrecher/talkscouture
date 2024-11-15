@@ -1,0 +1,46 @@
+<app-login-dialog close/><!-- modal de inicio de sesión -->
+
+<article class="rightMenu">
+
+  @if(isAuthenticated){
+    <section class="profile">
+      <a routerLink="profile">
+        <img src="images/usuario.png" alt="Profile Icon">
+      </a>
+    </section>
+  }@else {
+
+    <section class="login">
+      <a (click)="openLoginDialog()">
+        <img src="images/login.png" alt="Profile Icon">
+      </a>
+    </section>
+    
+  }
+
+  
+
+  <!-- instagram -->
+  <section class="instagram">
+    <a href="https://www.instagram.com/talkscouture?igsh=MXh2M2RuaXBna2Vjaw==" target="_blank">
+      <img src="images/instagram.png" alt="Instagram Icon">
+    </a>
+  </section>
+
+  <!-- linkedin -->
+  <section class="linkedin">
+    <a href="https://www.linkedin.com/in/luc%C3%ADa-d%C3%ADaz-817014282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+      target="_blank">
+      <img src="images/linkedin.png" alt="Linkedin Icon">
+    </a>
+  </section>
+
+  <!-- X -->
+  <section class="x">
+    <a href="https://x.com/talkscouture?s=21" target="_blank">
+      <img src="images/x.png" alt="X Icon">
+    </a>
+  </section>
+
+
+</article>

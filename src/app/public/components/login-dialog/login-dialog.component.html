@@ -1,0 +1,15 @@
+<article class="loginDialog">
+    <dialog  class="dialog" #dialog data-modal>
+
+        <button (click)="closeDialog()">
+            <img src="images/close.png" alt="">
+        </button>
+
+        <form>
+            <app-input label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
+            <app-input label="Contraseña" inputPlaceholder="Ingrese su contraseña" inputType="password" />
+            <app-button (click)="login($event)" buttonValue="Iniciar Sesión"/>
+        </form>
+
+    </dialog>
+</article>

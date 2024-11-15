@@ -1,57 +1,9 @@
-<header>
 
-  <nav>
-    <a routerLinkActive="active" routerLink="inicio">Inicio.</a>
-    <a routerLinkActive="active" routerLink="thethought">The thought.</a>
-    <a routerLinkActive="active" routerLink="dearfashion">Dear fashion.</a>
-    <a routerLinkActive="active" routerLink="muchomasqueanuncios">Mucho más que anuncios</a>
-  </nav>
-
-  <article class="title">
-    <h1>TALKS COUTURE</h1>
-  </article>
-
-
-  <article class="socialNetworks">
-
-    <!-- instagram -->
-    <section class="instagram">
-      <a href="https://www.instagram.com/talkscouture?igsh=MXh2M2RuaXBna2Vjaw==" target="_blank">
-        <img src="images/instagram.png" alt="Instagram Icon">
-      </a>
-    </section>
-
-    <!-- linkedin -->
-    <section class="linkedin">
-      <a href="https://www.linkedin.com/in/luc%C3%ADa-d%C3%ADaz-817014282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-        <img src="images/linkedin.png" alt="Linkedin Icon">
-      </a>
-    </section>
-
-    <!-- X -->
-    <section class="x">
-      <a href="https://x.com/talkscouture?s=21" target="_blank">
-        <img src="images/x.png" alt="X Icon">
-      </a>
-    </section>
-
-
-  </article>
-
-</header>
-
-
+<app-header/>
 
 <main [@routeTransition]="getRouteAnimationData()">
   <router-outlet />
 </main>
 
 
-<footer>
-  <h5>© Talks Couture</h5>
-  <h5>Página creada por 
-    <a href="https://github.com/Turbrecher" target="_blank">
-      Víctor Vera Coronel
-    </a>
-  </h5>
-</footer>
+<app-footer/>

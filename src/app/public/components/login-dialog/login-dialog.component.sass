@@ -1,0 +1,39 @@
+.loginDialog
+    width: 50%
+    margin: 0 auto
+    border: solid right 2px
+
+    button
+        position: fixed
+        top: 0
+        left: 100%
+        transform: translate(-150%, 50%)
+        background: none
+        border: none
+        text-align: right
+        width: 3.5%
+        transition: background 0.33s ease-in-out
+        padding: 0.5rem
+        &:hover
+            background: #9C1726
+        img
+            width: 100%
+        
+            
+
+    .dialog
+        border: solid black 1px
+        padding: 2rem
+        position: fixed
+        left: 50%
+        top: 50%
+        width: 50%
+        transform: translate(-50%, -50%)
+        transition: opacity 1s ease, display 1s ease allow-discrete
+        opacity: 0
+        &[open]
+            opacity: 1
+            transition: opacity 1s ease
+            @starting-style
+                opacity: 0
+
