@@ -9,7 +9,12 @@
     </section>
 
     <section class="time">
-        <p>- {{article.readTime}} minuto de lectura -</p>
+        @if (article.readTime == "1") {
+            <p>- {{article.readTime}} minuto de lectura -</p>
+        }@else {
+            <p>- {{article.readTime}} minutos de lectura -</p>
+        }
+        
     </section>
 
     <section class="section">

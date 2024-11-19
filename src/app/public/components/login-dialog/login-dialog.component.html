@@ -1,15 +1,18 @@
 <article class="loginDialog">
     <dialog  class="dialog" #dialog data-modal>
 
-        <button (click)="closeDialog()">
+        <button class="closeButton" (click)="closeDialog()">
             <img src="images/close.png" alt="">
         </button>
 
-        <form>
-            <app-input label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
-            <app-input label="Contraseña" inputPlaceholder="Ingrese su contraseña" inputType="password" />
+        <form [formGroup]="loginForm">
+            <h1>Iniciar Sesión</h1>
+            <app-input formControlName="email" label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
+            <app-input formControlName="password" label="Contraseña" inputPlaceholder="Ingrese su contraseña" inputType="password" />
             <app-button (click)="login($event)" buttonValue="Iniciar Sesión"/>
         </form>
+
+        
 
     </dialog>
 </article>

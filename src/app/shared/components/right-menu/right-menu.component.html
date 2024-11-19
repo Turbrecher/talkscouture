@@ -1,14 +1,41 @@
 <app-login-dialog close/><!-- modal de inicio de sesión -->
+<app-register-dialog close/><!-- modal de inicio de sesión -->
 
 <article class="rightMenu">
 
   @if(isAuthenticated){
+
+    <section class="logout">
+      <a (click)="logout()">
+        <img src="images/logout.png" alt="Profile Icon">
+      </a>
+    </section>
+
+    @if(isWriter || isAdmin){
+      <section class="write">
+        <a routerLink="write">
+          <img src="images/write.png" alt="Profile Icon">
+        </a>
+      </section>
+    }
+
+
     <section class="profile">
       <a routerLink="profile">
         <img src="images/usuario.png" alt="Profile Icon">
       </a>
     </section>
+
+    
+
+   
   }@else {
+
+    <section class="register">
+      <a (click)="openRegisterDialog()">
+        <img src="images/registrarse.png" alt="Profile Icon">
+      </a>
+    </section>
 
     <section class="login">
       <a (click)="openLoginDialog()">
