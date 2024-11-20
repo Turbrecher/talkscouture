@@ -7,9 +7,9 @@
 
         <form [formGroup]="loginForm">
             <h1>Iniciar Sesión</h1>
-            <app-input formControlName="email" label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
-            <app-input formControlName="password" label="Contraseña" inputPlaceholder="Ingrese su contraseña" inputType="password" />
-            <app-button (click)="login($event)" buttonValue="Iniciar Sesión"/>
+            <app-input [valid]="email.valid||email.pristine" formControlName="email" label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
+            <app-input [valid]="password.valid||password.pristine" formControlName="password" label="Contraseña" inputPlaceholder="Ingrese su contraseña" inputType="password" />
+            <app-button [valid]="loginForm.valid" (click)="login($event)" buttonValue="Iniciar Sesión"/>
         </form>
 
         

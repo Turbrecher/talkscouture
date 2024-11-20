@@ -63,7 +63,7 @@ export class RightMenuComponent {
 
         },
         error: (err) => {
-
+          this.cookieService.set('token',"",-1000)
         }
       }
     )
@@ -73,11 +73,15 @@ export class RightMenuComponent {
 
 
   logout() {
+
+
     this.authenticationService.logout().subscribe({
       next: (response) => {
         this.cookieService.set("token", "", -1000);
         this.ngOnInit();
         this.router.navigate(['inicio'])
+        this.ngOnInit();
+
       },
       error: (err) => { alert(err.message) },
     })

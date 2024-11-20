@@ -1,4 +1,7 @@
 <article class="formControl">
     <label>{{label}}</label>
     <input  type={{inputType}} value={{inputValue}} placeholder={{inputPlaceholder}} [(ngModel)]="input" (ngModelChange)="onChange($event)">
+    @if(!valid){
+        <label class="error">La información de este campo no es válida.</label>
+    }
 </article>

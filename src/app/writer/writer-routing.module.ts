@@ -11,7 +11,7 @@ const routes: Routes = [
     component: WriterHubComponent,
     children: [
       {
-        path: "articles/list/:page",
+        path: "articles/list",
         component: ArticleListComponent
       },
 

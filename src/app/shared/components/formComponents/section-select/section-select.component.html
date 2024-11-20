@@ -1,0 +1,8 @@
+<article class="formControl">
+    <label>{{label}}</label>
+    <select [(ngModel)]="input" (ngModelChange)="onChange($event)">
+        <option value="{{section1}}">{{section1}}</option>
+        <option value="{{section2}}">{{section2}}</option>
+        <option value="{{section3}}">{{section3}}</option>
+    </select>
+</article>

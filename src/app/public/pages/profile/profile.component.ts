@@ -14,11 +14,11 @@ import { ButtonComponent } from "../../../shared/components/formComponents/butto
 export class ProfileComponent {
 
   profileForm: FormGroup = this.fb.group({
-    "email": ["", Validators.required],
-    "password": ["", Validators.required],
     "name": ["", Validators.required],
     "surname": ["", Validators.required],
     "username": ["", Validators.required],
+    "email": ["", Validators.required],
+    "password": ["", []],
 
   });
 

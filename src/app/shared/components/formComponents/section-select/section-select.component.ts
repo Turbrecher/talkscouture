@@ -1,26 +1,30 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { InputComponent } from '../input/input.component';
 
 @Component({
-  selector: 'app-input',
+  selector: 'app-section-select',
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.sass',
+  templateUrl: './section-select.component.html',
+  styleUrl: './section-select.component.sass',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: InputComponent,
+      useExisting: SectionSelectComponent,
       multi: true,
     },
   ]
 })
-export class InputComponent {
-  @Input() inputType: String = "text"
-  @Input() inputValue: String = ""
-  @Input() inputPlaceholder: String = "Insert text..."
-  @Input() label: String = "This is an input"
-  @Input() valid: boolean = false
+export class SectionSelectComponent {
+
+  @Input() section1: string = "section1"
+  @Input() section2: string = "section2"
+  @Input() section3: string = "section3"
+  @Input() section1Name: string = "section1Name"
+  @Input() section2Name: string = "section2Name"
+  @Input() section3Name: string = "section3Name"
+  @Input() label: string = "Label"
 
 
   //CONTROL VALUE ACCESSORS ATTRIBUTES.

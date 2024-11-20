@@ -1,0 +1,5 @@
+<article class="formGroup">
+    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+    <ngx-editor [editor]="editor" [ngModel]="html" (ngModelChange)="onChange($event)" [disabled]="false"
+        [placeholder]="'Escriba aquí el contenido de su artículo'"></ngx-editor>
+</article>

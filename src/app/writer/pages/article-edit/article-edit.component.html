@@ -1,1 +1,29 @@
-<p>article-edit works!</p>
+<article class="editArticle">
+
+    <h1>Edición de artículo</h1>
+
+    <form enctype="multipart/form-data" [formGroup]="editArticleForm">
+
+        <app-input [valid]="title.valid||title.pristine" formControlName="title" label="Título" inputPlaceholder="Ingrese el título del artículo"
+            inputType="text" />
+        <app-input [valid]="description.valid||description.pristine" formControlName="description" label="Descripción" inputPlaceholder="Ingrese el título del artículo"
+            inputType="text" />
+        <app-input [valid]="readTime.valid||readTime.pristine" formControlName="readTime" label="Tiempo de lectura (minutos)"
+            inputPlaceholder="Ingrese el título del artículo" inputType="number" />
+        <app-input [valid]="photo.valid||photo.pristine" formControlName="photo" label="Portada (Imagen)" inputPlaceholder="Ingrese el título del artículo"
+            inputType="file" />
+
+        <app-section-select formControlName="section" section1="The Thought" section2="Dear Fashion"
+            section3="Mucho más que anuncios" label="Sección" />
+
+        <article class="formGroup">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor formControlName="editorContent" [editor]="editor" [ngModel]="html" [disabled]="false"
+                [placeholder]="'Escriba aquí el contenido de su artículo'"></ngx-editor>
+        </article>
+
+        <app-button [valid]="editArticleForm.valid" (click)="editArticle($event)" buttonValue="Editar artículo" />
+        <app-button extraClass="delete" (click)="deleteArticle($event)" buttonValue="Eliminar artículo" />
+
+    </form>
+</article>

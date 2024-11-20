@@ -8,5 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './button.component.sass'
 })
 export class ButtonComponent {
-  @Input() buttonValue: String = "Press me!"
+  @Input() buttonValue: string = "Press me!"
+  @Input() extraClass: string = ""
+  @Input() valid: boolean = true
 }

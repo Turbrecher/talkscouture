@@ -1,13 +1,15 @@
 <article class="writerArticleList">
-    <section class="title">
-        <h1>LISTA</h1>
-    </section>
+
+    <h1>Lista de artículos del escritor</h1>
+
 
     <section class="articles">
         @for (article of articles; track $index) {
-        <app-article-card routerLink="/writer/articles/edit/{{article.id}}" photo="{{article.photo}}"
-            title="{{article.title}}" description="{{article.description}}"
-            readTime="{{article.readTime}} minutos de lectura"></app-article-card>
+        <a routerLink="/writer/articles/edit/{{article.id}}">
+            <app-article-card routerLink="/writer/articles/edit/{{article.id}}" photo="{{article.photo}}"
+                title="{{article.title}}" description="{{article.description}}"
+                readTime="{{article.readTime}} minutos de lectura"></app-article-card>
+        </a>
         }
     </section>
 </article>
