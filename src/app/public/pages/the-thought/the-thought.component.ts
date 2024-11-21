@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 import { ArticleService } from '../../services/article.service';
 import { Article } from '../../../shared/models/article';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-the-thought',
@@ -18,7 +19,8 @@ export class TheThoughtComponent {
   }
 
   articles !: Array<Article>
-
+  public imgURL = Urls.IMAGES
+  
   ngOnInit() {
 
 

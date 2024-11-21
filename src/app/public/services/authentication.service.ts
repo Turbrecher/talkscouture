@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Urls } from '../../shared/urls/urls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private URL: string = "http://localhost:8000/api/"
+  private URL: string = Urls.GLOBAL
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
 

@@ -3,16 +3,18 @@ import { ArticleCardComponent } from "../../../writer/components/article-card/ar
 import { WriterService } from '../../services/writer.service';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { Utilities } from '../../../shared/utilities';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-article-list',
   standalone: true,
-  imports: [ArticleCardComponent, RouterLink, RouterLinkActive],
+  imports: [ArticleCardComponent, RouterLink],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.sass'
 })
 export class ArticleListComponent {
   articles: Array<any> = []
+  public imgURL = Urls.IMAGES
 
   constructor(private writerService: WriterService, private activatedRoute: ActivatedRoute) {
 

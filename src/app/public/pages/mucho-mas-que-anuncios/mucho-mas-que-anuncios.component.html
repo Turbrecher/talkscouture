@@ -3,7 +3,7 @@
     <section class="articles">
         @for (article of articles; track $index) {
         <app-article-card [id]="article.id"
-            photo="{{article.photo}}"
+            photo="{{imgURL}}{{article.photo}}"
             description="{{article.description}}"
             title="{{article.title}}" />
         }

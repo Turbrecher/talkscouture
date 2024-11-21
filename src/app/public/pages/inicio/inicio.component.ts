@@ -3,6 +3,7 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
 import { CarouselComponent } from "../../components/carousel/carousel.component";
 import { Article } from '../../../shared/models/article';
 import { ArticleService } from '../../services/article.service';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-inicio',
@@ -17,6 +18,7 @@ export class InicioComponent {
   public topArticles!: Array<Article>
   public allArticles!: Array<Article>
 
+  public imgURL = Urls.IMAGES
 
 
 

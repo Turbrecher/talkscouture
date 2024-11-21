@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ArticleCardComponent } from "../../components/article-card/article-card.component";
 import { ArticleService } from '../../services/article.service';
 import { Article } from '../../../shared/models/article';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-dear-fashion',
@@ -12,7 +13,7 @@ import { Article } from '../../../shared/models/article';
 })
 export class DearFashionComponent {
   articles !: Array<Article>
-
+  public imgURL = Urls.IMAGES
   constructor(private articleService: ArticleService) {
 
   }

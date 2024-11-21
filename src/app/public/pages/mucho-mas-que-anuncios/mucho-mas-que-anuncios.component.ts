@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ArticleCardComponent } from "../../components/article-card/article-card.component";
 import { Article } from '../../../shared/models/article';
 import { ArticleService } from '../../services/article.service';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-mucho-mas-que-anuncios',
@@ -14,7 +15,7 @@ export class MuchoMasQueAnunciosComponent {
   constructor(private articleService: ArticleService) {
 
   }
-
+  public imgURL = Urls.IMAGES
   articles !: Array<Article>
 
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Article } from '../../../shared/models/article';
 import { ArticleService } from '../../services/article.service';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-carousel',
@@ -13,6 +14,7 @@ import { ArticleService } from '../../services/article.service';
 export class CarouselComponent {
   private interval: any
   public carouselArticles !: Array<Article>
+  public imgURL = Urls.IMAGES
 
   ngOnInit() {
     this.articleService.getAllArticlesOnPage(1).subscribe((articles) => {

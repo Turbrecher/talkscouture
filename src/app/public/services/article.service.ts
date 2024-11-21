@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Article } from '../../shared/models/article';
+import { Urls } from '../../shared/urls/urls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  private URL: string = "http://localhost:8000/api/"
+  private URL: string = Urls.GLOBAL
 
   constructor(private http: HttpClient) {
 

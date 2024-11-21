@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Article } from '../../shared/models/article';
+import { Urls } from '../../shared/urls/urls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WriterService {
 
-  URL: string = "http://localhost:8000/api/"
+  URL: string = Urls.GLOBAL
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 

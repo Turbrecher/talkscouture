@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ArticleService } from '../../services/article.service';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from '../../../shared/models/article';
+import { Urls } from '../../../shared/urls/urls';
 
 @Component({
   selector: 'app-article-view',
@@ -12,6 +13,8 @@ import { Article } from '../../../shared/models/article';
   encapsulation: ViewEncapsulation.None,
 })
 export class ArticleViewComponent {
+
+  public imgURL = Urls.IMAGES
 
   public article: Article = {
     id: "1",
