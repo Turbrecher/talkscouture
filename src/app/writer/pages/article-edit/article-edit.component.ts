@@ -4,7 +4,7 @@ import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
 import { ButtonComponent } from '../../../shared/components/formComponents/button/button.component';
 import { InputComponent } from '../../../shared/components/formComponents/input/input.component';
 import { SectionSelectComponent } from '../../../shared/components/formComponents/section-select/section-select.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../../../public/services/article.service';
 import { WriterService } from '../../services/writer.service';
 
@@ -17,6 +17,7 @@ import { WriterService } from '../../services/writer.service';
 })
 export class ArticleEditComponent {
 
+  private file: any = " "
 
   id: string = "1"
   editArticleForm: FormGroup = this.fb.group({
@@ -70,7 +71,9 @@ export class ArticleEditComponent {
     this.editor.destroy()
   }
 
-  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private writerService: WriterService) {
+  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private writerService: WriterService,
+    private router: Router
+  ) {
 
   }
 
@@ -78,25 +81,36 @@ export class ArticleEditComponent {
   editArticle(event: Event) {
     event.preventDefault()
 
-
     let article = {
       title: this.title.value,
       description: this.description.value,
-      photo: this.photo.value,
+      photo: this.file,
       readTime: this.readTime.value,
       content: this.editorContent.value,
       section: this.section.value,
       id: this.id
     }
 
-    console.log(article)
 
-    this.writerService.editArticle(article).subscribe({
+    let formData = new FormData()
+
+    formData.append('title', this.title.value)
+    formData.append('description', this.description.value)
+    formData.append('readTime', this.readTime.value)
+    formData.append('content', this.editorContent.value)
+    formData.append('section', this.section.value)
+    formData.append('id', this.id)
+    formData.append('photo', this.file, this.file.name)
+
+
+
+    this.writerService.editArticle(formData).subscribe({
       next: (response) => {
+        this.router.navigate(['/writer/articles/list'])
         console.log(response)
       },
-      error: (response) => {
-
+      error: (err) => {
+        console.log(err)
       }
     })
   }
@@ -110,6 +124,12 @@ export class ArticleEditComponent {
     console.log(this.id)
   }
 
+
+  getFile(event: any) {
+    this.file = event.target.files[0]
+
+    console.log(this.file)
+  }
 
   get title() {
     return this.editArticleForm.get('title') as FormControl

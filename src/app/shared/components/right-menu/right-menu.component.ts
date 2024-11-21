@@ -64,6 +64,7 @@ export class RightMenuComponent {
         },
         error: (err) => {
           this.cookieService.set('token',"",-1000)
+          this.ngOnInit()
         }
       }
     )
@@ -80,7 +81,6 @@ export class RightMenuComponent {
         this.cookieService.set("token", "", -1000);
         this.ngOnInit();
         this.router.navigate(['inicio'])
-        this.ngOnInit();
 
       },
       error: (err) => { alert(err.message) },

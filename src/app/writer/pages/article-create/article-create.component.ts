@@ -7,6 +7,7 @@ import { Validators } from '@angular/forms';
 import { ButtonComponent } from "../../../shared/components/formComponents/button/button.component";
 import { SectionSelectComponent } from "../../../shared/components/formComponents/section-select/section-select.component";
 import { WriterService } from '../../services/writer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-create',
@@ -40,6 +41,8 @@ export class ArticleCreateComponent {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
 
+  private file: any = " "
+
 
   onChange(html: object) {
     this.html = '';
@@ -54,7 +57,7 @@ export class ArticleCreateComponent {
     this.editor.destroy()
   }
 
-  constructor(private fb: FormBuilder, private writerService: WriterService) {
+  constructor(private fb: FormBuilder, private writerService: WriterService, private router: Router) {
 
   }
 
@@ -66,21 +69,38 @@ export class ArticleCreateComponent {
     let article = {
       "title": this.title.value,
       "description": this.description.value,
-      "photo": this.photo.value,
+      "photo": this.file,
       "readTime": this.readTime.value,
       "content": this.editorContent.value,
       "section": this.section.value
     }
 
-    this.writerService.createArticle(article).subscribe({
+
+    let formData = new FormData()
+
+    formData.append('title', this.title.value)
+    formData.append('description', this.description.value)
+    formData.append('readTime', this.readTime.value)
+    formData.append('content', this.editorContent.value)
+    formData.append('section', this.section.value)
+    formData.append('photo', this.file, this.file.name)
+
+    this.writerService.createArticle(formData).subscribe({
       next: (response) => {
         console.log(response)
+        this.router.navigate(['/writer/articles/list'])
       },
       error: (err) => {
         console.log(err)
 
       }
     })
+  }
+
+  getFile(event: any) {
+    this.file = event.target.files[0]
+
+    console.log(this.file)
   }
 
 

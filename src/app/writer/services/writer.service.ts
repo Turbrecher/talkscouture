@@ -22,7 +22,7 @@ export class WriterService {
 
   createArticle(article: any) {
     let headers = {
-      "Authorization": "Bearer " + this.cookieService.get("token"), "Access-Control-Allow-Origin": "*"
+      "Authorization": "Bearer " + this.cookieService.get("token"), 
     }
 
 
@@ -31,10 +31,10 @@ export class WriterService {
 
   editArticle(article: any) {
     let headers = {
-      "Authorization": "Bearer " + this.cookieService.get("token"), "Access-Control-Allow-Origin": "*"
+      "Authorization": "Bearer " + this.cookieService.get("token"), 
     }
 
 
-    return this.http.put<any>(this.URL + "articles/" + article.id, article, { headers })
+    return this.http.post<any>(this.URL + "articles/edit", article, { headers })
   }
 }

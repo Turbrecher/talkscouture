@@ -10,7 +10,7 @@
             inputType="text" [valid]="description.valid || description.pristine"/>
         <app-input formControlName="readTime" label="Tiempo de lectura (minutos)"
             inputPlaceholder="Ingrese el título del artículo" inputType="number" [valid]="readTime.valid || readTime.pristine"/>
-        <app-input formControlName="photo" label="Portada (Imagen)" inputPlaceholder="Ingrese el título del artículo"
+        <app-input (change)="getFile($event)" formControlName="photo" label="Portada (Imagen)" inputPlaceholder="Ingrese el título del artículo"
             inputType="file" [valid]="photo.valid || photo.pristine"/>
 
         <app-section-select formControlName="section" section1="The Thought" section2="Dear Fashion"
