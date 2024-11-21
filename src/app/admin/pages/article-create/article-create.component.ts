@@ -1,24 +1,21 @@
 import { Component } from '@angular/core';
-import { InputComponent } from "../../../shared/components/formComponents/input/input.component";
-import { TextEditorComponent } from '../../../shared/components/formComponents/text-editor/text-editor.component';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Editor, NgxEditorComponent, NgxEditorModule, Toolbar } from 'ngx-editor';
-import { Validators } from '@angular/forms';
-import { ButtonComponent } from "../../../shared/components/formComponents/button/button.component";
-import { SectionSelectComponent } from "../../../shared/components/formComponents/section-select/section-select.component";
-import { WriterService } from '../../services/writer.service';
+import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import {  Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
+import { WriterService } from '../../../writer/services/writer.service';
+import { InputComponent } from "../../../shared/components/formComponents/input/input.component";
+import { SectionSelectComponent } from "../../../shared/components/formComponents/section-select/section-select.component";
+import { ButtonComponent } from "../../../shared/components/formComponents/button/button.component";
+import { ArticleAdminService } from '../../services/article-admin.service';
 
 @Component({
   selector: 'app-article-create',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, NgxEditorModule, ReactiveFormsModule, FormsModule, SectionSelectComponent],
+  imports: [InputComponent, SectionSelectComponent, ButtonComponent, ReactiveFormsModule, FormsModule, NgxEditorModule],
   templateUrl: './article-create.component.html',
   styleUrl: './article-create.component.sass'
 })
 export class ArticleCreateComponent {
-
-
   createArticleForm: FormGroup = this.fb.group({
     "title": ["", Validators.required],
     "description": ["", Validators.required],
@@ -57,7 +54,7 @@ export class ArticleCreateComponent {
     this.editor.destroy()
   }
 
-  constructor(private fb: FormBuilder, private writerService: WriterService, private router: Router) {
+  constructor(private fb: FormBuilder, private adminArticleService: ArticleAdminService, private router: Router) {
 
   }
 
@@ -75,10 +72,10 @@ export class ArticleCreateComponent {
     formData.append('section', this.section.value)
     formData.append('photo', this.file, this.file.name)
 
-    this.writerService.createArticle(formData).subscribe({
+    this.adminArticleService.createArticle(formData).subscribe({
       next: (response) => {
         console.log(response)
-        this.router.navigate(['/writer/articles/list'])
+        this.router.navigate(['/admin/articles/list'])
       },
       error: (err) => {
         console.log(err)

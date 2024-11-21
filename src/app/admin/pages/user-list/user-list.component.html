@@ -1,0 +1,15 @@
+<article class="userList">
+
+    <h1>Lista de todos los artículos</h1>
+
+
+    <section class="users">
+        @for (user of users; track $index) {
+        <a routerLink="/admin/users/edit/{{user.id}}">
+            <app-user-card routerLink="/writer/articles/edit/{{user.id}}" photo="{{imgURL}}usuario.png"
+                name="{{user.name}}" surname="{{user.surname}}" username="{{user.username}}" email="{{user.email}}" />
+        </a>
+        }
+    </section>
+
+</article>

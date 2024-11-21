@@ -7,14 +7,22 @@
 
     <section class="logout">
       <a (click)="logout()">
-        <img src="images/logout.png" alt="Profile Icon">
+        <img src="images/logout.png" alt="Logout Icon">
       </a>
     </section>
 
     @if(isWriter || isAdmin){
       <section class="write">
         <a routerLink="writer">
-          <img src="images/write.png" alt="Profile Icon">
+          <img src="images/write.png" alt="Writer Icon">
+        </a>
+      </section>
+    }
+
+    @if( isAdmin){
+      <section class="admin">
+        <a routerLink="admin">
+          <img src="images/admin.png" alt="Admin Icon">
         </a>
       </section>
     }

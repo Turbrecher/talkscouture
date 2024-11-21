@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { ArticleCardComponent } from "../../../writer/components/article-card/article-card.component";
-import { WriterService } from '../../services/writer.service';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
-import { Utilities } from '../../../shared/utilities';
+import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Urls } from '../../../shared/urls/urls';
+import { ArticleAdminService } from '../../services/article-admin.service';
+import { ArticleCardComponent } from '../../components/article-card/article-card.component';
 
 @Component({
   selector: 'app-article-list',
@@ -13,10 +12,11 @@ import { Urls } from '../../../shared/urls/urls';
   styleUrl: './article-list.component.sass'
 })
 export class ArticleListComponent {
+
   articles: Array<any> = []
   public imgURL = Urls.IMAGES
 
-  constructor(private writerService: WriterService, private activatedRoute: ActivatedRoute) {
+  constructor(private articleAdminService: ArticleAdminService, private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -25,12 +25,10 @@ export class ArticleListComponent {
     
 
     this.articles = []
-    let page = this.activatedRoute.snapshot.params["page"]
 
-    this.writerService.listMyArticles(page).subscribe({
+    this.articleAdminService.listAllArticles().subscribe({
       next: (response) => {
 
-        console.log(response)
 
         //LOADING ARTICLES
         response.forEach((article: any) => {
@@ -45,5 +43,4 @@ export class ArticleListComponent {
     })
   }
 
-  
 }

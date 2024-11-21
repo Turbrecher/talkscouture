@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
-import { ButtonComponent } from '../../../shared/components/formComponents/button/button.component';
-import { InputComponent } from '../../../shared/components/formComponents/input/input.component';
-import { SectionSelectComponent } from '../../../shared/components/formComponents/section-select/section-select.component';
+import { ArticleAdminService } from '../../services/article-admin.service';
+import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
+import { WriterService } from '../../../writer/services/writer.service';
 import { ArticleService } from '../../../public/services/article.service';
-import { WriterService } from '../../services/writer.service';
+import { InputComponent } from "../../../shared/components/formComponents/input/input.component";
+import { SectionSelectComponent } from "../../../shared/components/formComponents/section-select/section-select.component";
+import { ButtonComponent } from "../../../shared/components/formComponents/button/button.component";
 
 @Component({
   selector: 'app-article-edit',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, NgxEditorModule, ReactiveFormsModule, FormsModule, SectionSelectComponent],
+  imports: [InputComponent, SectionSelectComponent, ButtonComponent, ReactiveFormsModule, FormsModule, NgxEditorModule],
   templateUrl: './article-edit.component.html',
   styleUrl: './article-edit.component.sass'
 })
@@ -71,7 +72,7 @@ export class ArticleEditComponent {
     this.editor.destroy()
   }
 
-  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private writerService: WriterService,
+  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private articleAdminService: ArticleAdminService,
     private router: Router
   ) {
 
@@ -81,17 +82,6 @@ export class ArticleEditComponent {
   editArticle(event: Event) {
     event.preventDefault()
 
-    let article = {
-      title: this.title.value,
-      description: this.description.value,
-      photo: this.file,
-      readTime: this.readTime.value,
-      content: this.editorContent.value,
-      section: this.section.value,
-      id: this.id
-    }
-
-
     let formData = new FormData()
 
     formData.append('title', this.title.value)
@@ -100,17 +90,14 @@ export class ArticleEditComponent {
     formData.append('content', this.editorContent.value)
     formData.append('section', this.section.value)
     formData.append('id', this.id)
-    
-    
-    if(this.file != " "){
+
+    if (this.file != " ") {
       formData.append('photo', this.file, this.file.name)
     }
 
-
-
-    this.writerService.editArticle(formData).subscribe({
+    this.articleAdminService.editArticle(formData).subscribe({
       next: (response) => {
-        this.router.navigate(['/writer/articles/list'])
+        this.router.navigate(['/admin/articles/list'])
         console.log(response)
       },
       error: (err) => {
@@ -124,18 +111,18 @@ export class ArticleEditComponent {
   deleteArticle(event: Event) {
     event.preventDefault()
 
+
     if(confirm("¿Estás seguro/a?")){
-      this.writerService.deleteArticle(this.id).subscribe({
+      this.articleAdminService.deleteArticle(this.id).subscribe({
         next: (response) => {
           console.log(response)
-          this.router.navigate(['/writer/articles/list'])
+          this.router.navigate(['/admin/articles/list'])
         },
         error: (err)=>{
           console.log(err)
         }
       })
     }
-
   }
 
 
@@ -169,5 +156,6 @@ export class ArticleEditComponent {
     return this.editArticleForm.get('section') as FormControl
 
   }
+
 
 }

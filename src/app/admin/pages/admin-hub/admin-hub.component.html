@@ -1,5 +1,5 @@
-<article class="writerHub">
-    <h1>MENÚ DEL ESCRITOR</h1>
+<article class="adminHub">
+    <h1>MENÚ DEL ADMINISTRADOR</h1>
     <nav>
         <section class="articles">
             Articles
@@ -9,6 +9,16 @@
             <a routerLink="articles/create">
                 <img src="images/add.png" alt="">
             </a>
+        </section>
+
+        <section class="users">
+            Users
+        <a routerLink="users/list">
+            <img src="images/list.png" alt="">
+        </a>
+        <a routerLink="users/create">
+            <img src="images/add.png" alt="">
+        </a>
         </section>
     </nav>
     <router-outlet></router-outlet>

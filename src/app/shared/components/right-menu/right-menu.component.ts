@@ -79,8 +79,14 @@ export class RightMenuComponent {
     this.authenticationService.logout().subscribe({
       next: (response) => {
         this.cookieService.set("token", "", -1000);
+
+        //We pause 1 second to make sure the cookie gets erased.
+        setTimeout(()=>{}, 1000);
         this.ngOnInit();
+        setTimeout(()=>{}, 1000);
         this.router.navigate(['inicio'])
+        setTimeout(()=>{}, 1000);
+        location.reload()
 
       },
       error: (err) => { alert(err.message) },
