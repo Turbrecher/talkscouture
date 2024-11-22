@@ -11,16 +11,19 @@ const routes: Routes = [
     component: WriterHubComponent,
     children: [
       {
+        //List articles
         path: "articles/list",
         component: ArticleListComponent
       },
 
       {
+        //Create new article
         path: "articles/create",
         component: ArticleCreateComponent
       },
 
       {
+        //Edit an existing article
         path: "articles/edit/:id",
         component: ArticleEditComponent
       },

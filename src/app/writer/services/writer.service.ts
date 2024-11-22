@@ -13,6 +13,8 @@ export class WriterService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
+
+  //Function that lists all the articles the writer owns.
   listMyArticles(page: string = "1") {
     let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
 
@@ -21,6 +23,8 @@ export class WriterService {
   }
 
 
+
+  //Function that creates an article.
   createArticle(article: any) {
     let headers = {
       "Authorization": "Bearer " + this.cookieService.get("token"), 
@@ -30,6 +34,8 @@ export class WriterService {
     return this.http.post<any>(this.URL + "articles/", article, { headers })
   }
 
+
+  //Function that edits an article.
   editArticle(article: any) {
     let headers = {
       "Authorization": "Bearer " + this.cookieService.get("token"), 

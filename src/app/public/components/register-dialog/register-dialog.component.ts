@@ -28,16 +28,17 @@ export class RegisterDialogComponent {
   ngOnInit() {
   }
 
-
+  //Functions that opens the dialog box.
   openDialog() {
     this.dialog.nativeElement.showModal()
   }
 
+  //Functions that closes the dialog box.
   closeDialog() {
     this.dialog.nativeElement.close()
   }
 
-
+  //Function that registers an user
   register($event: Event) {
     $event.preventDefault()
 
@@ -58,6 +59,7 @@ export class RegisterDialogComponent {
 
 
 
+  //getters
   get email() {
     return this.registerForm.get("email") as FormControl
   }
@@ -65,18 +67,5 @@ export class RegisterDialogComponent {
   get password() {
     return this.registerForm.get("password") as FormControl
   }
-
-  get name() {
-    return this.registerForm.get("name") as FormControl
-  }
-
-  get surname() {
-    return this.registerForm.get("surname") as FormControl
-  }
-
-  get username() {
-    return this.registerForm.get("username") as FormControl
-  }
-
 
 }

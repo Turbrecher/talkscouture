@@ -41,6 +41,7 @@ export class UserAdminService {
     return this.http.put<any>(this.URL + "users/" + id, user, { headers })
   }
 
+  //Function that gets an user.
   getUser(id: string) {
     let headers = {
       "Authorization": "Bearer " + this.cookieService.get("token"),

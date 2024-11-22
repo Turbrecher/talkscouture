@@ -13,15 +13,15 @@ import { Urls } from '../../../shared/urls/urls';
 })
 export class DearFashionComponent {
   articles !: Array<Article>
-  public imgURL = Urls.IMAGES
+  public imgURL = Urls.ARTICLE_IMAGES
+  
   constructor(private articleService: ArticleService) {
 
   }
 
-
   ngOnInit() {
 
-
+    //Loads all dear fashion section' articles.
     this.articleService.getSectionArticles("Dear Fashion").subscribe((articles) => {
       this.articles = articles.data
 

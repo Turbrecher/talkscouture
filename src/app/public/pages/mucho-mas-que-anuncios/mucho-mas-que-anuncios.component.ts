@@ -12,15 +12,19 @@ import { Urls } from '../../../shared/urls/urls';
   styleUrl: './mucho-mas-que-anuncios.component.sass'
 })
 export class MuchoMasQueAnunciosComponent {
+
+  public imgURL = Urls.ARTICLE_IMAGES
+  articles !: Array<Article>
+
   constructor(private articleService: ArticleService) {
 
   }
-  public imgURL = Urls.IMAGES
-  articles !: Array<Article>
+  
 
 
 
   ngOnInit() {
+    //Gets all articles of mucho mas que anuncios' section
     this.articleService.getSectionArticles("Mucho más que anuncios").subscribe((articles) => {
       this.articles = articles.data
 

@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { RightMenuComponent } from '../../../shared/components/right-menu/right-menu.component';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login-dialog',
@@ -32,15 +33,26 @@ export class LoginDialogComponent {
   }
 
 
+  //Functions that opens the dialog box.
   openDialog() {
     this.dialog.nativeElement.showModal()
   }
 
+  //Functions that closes the dialog box.
   closeDialog() {
     this.dialog.nativeElement.close()
   }
 
 
+  //Function that creates the auth token. (It uses an observable in order to navigate right after the cookie is set)
+  addToken(token: string) {
+    this.cookieService.set("token", token)
+
+    return of(token)
+  }
+
+
+  //Function that logs in an user.
   login($event: Event) {
     $event.preventDefault()
 
@@ -48,13 +60,15 @@ export class LoginDialogComponent {
 
     this.authenticationService.login(this.email.value, this.password.value).subscribe({
       next: async (response) => {
-        this.cookieService.set("token", "", -1000)
-        await delay(1000)
+        this.addToken(response.token).subscribe({
+          next: () => {
+            this.router.navigate(['inicio'])
+            location.reload()
+          }
+        })
 
-        this.cookieService.set("token", response.token)
-        await delay(2000)
 
-        location.reload()
+
       },
       error: (err) => {
         console.log(err)
@@ -65,6 +79,7 @@ export class LoginDialogComponent {
 
 
 
+  //getters
   get email() {
     return this.loginForm.get("email") as FormControl
   }

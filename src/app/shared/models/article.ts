@@ -12,5 +12,5 @@ export interface Article {
     writer: User,
     readTime: string,
     description: string,
-    content: String
+    content: string,
 }

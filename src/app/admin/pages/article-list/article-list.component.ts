@@ -14,7 +14,7 @@ import { ArticleCardComponent } from '../../components/article-card/article-card
 export class ArticleListComponent {
 
   articles: Array<any> = []
-  public imgURL = Urls.IMAGES
+  public imgURL = Urls.ARTICLE_IMAGES
 
   constructor(private articleAdminService: ArticleAdminService, private activatedRoute: ActivatedRoute) {
 
@@ -26,6 +26,7 @@ export class ArticleListComponent {
 
     this.articles = []
 
+    //Gets all articles.
     this.articleAdminService.listAllArticles().subscribe({
       next: (response) => {
 

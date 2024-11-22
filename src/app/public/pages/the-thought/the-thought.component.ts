@@ -13,17 +13,16 @@ import { Urls } from '../../../shared/urls/urls';
 })
 export class TheThoughtComponent {
 
+  articles !: Array<Article>
+  public imgURL = Urls.ARTICLE_IMAGES
 
   constructor(private articleService: ArticleService) {
 
   }
 
-  articles !: Array<Article>
-  public imgURL = Urls.IMAGES
-  
   ngOnInit() {
 
-
+    //gets all articles of the thought' section
     this.articleService.getSectionArticles("The Thought").subscribe((articles) => {
       this.articles = articles.data
 

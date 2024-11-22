@@ -14,6 +14,7 @@ export class AuthenticationService {
 
   }
 
+  //Function that logs in an user.
   login(email: String, password: String) {
     let headers = {}
     let params = {
@@ -24,38 +25,24 @@ export class AuthenticationService {
     return this.http.post<any>(this.URL + "login", params, { headers })
   }
 
+  //Function that retrieves profile data of the authenticated user.
   profile() {
     let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
 
     return this.http.post<any>(this.URL + "profile", {}, { headers })
   }
 
-  editUser(name: String, surname: String, username: String, email: String, password: String, id: String) {
+  //Function that edits an user (if you're not admin, you can only edit yourself).
+  editUser(user : FormData) {
     let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
 
-    
-    let params = {
-      "email": email,
-      "password": password,
-      "name": name,
-      "surname": surname,
-      "username": username,
-    }
+  
 
-    if(password == ""){
-      params = {
-        "email": email,
-        "password": " ",
-        "name": name,
-        "surname": surname,
-        "username": username,
-      }
-    }
-
-    return this.http.put<any>(this.URL + "users/" + id, params, { headers })
+    return this.http.post<any>(this.URL + "users/" + user.get('id'), user, { headers })
 
   }
 
+  //Function that registers a new user.
   register(user:any) {
     let headers = {}
 
@@ -63,12 +50,14 @@ export class AuthenticationService {
   }
 
 
+  //Function that gets the role of the authenticated user.
   getRole(token: String) {
     let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
 
     return this.http.post<any>(this.URL + "role", {}, { headers })
   }
 
+  //Function that logouts the user from the api DB (deletes token on db).
   logout() {
     let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
 

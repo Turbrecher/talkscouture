@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ArticleCardComponent {
 
+  //All inputs that the article card can receive.
   @Input() id: String = "1"
   @Input() photo: String = "images/defaultArticle.jpg"
   @Input() title: String = "My default title of article"

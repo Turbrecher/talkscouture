@@ -14,8 +14,10 @@ import { Urls } from '../../../shared/urls/urls';
 })
 export class ArticleViewComponent {
 
-  public imgURL = Urls.IMAGES
+  public imgURL = Urls.ARTICLE_IMAGES
+  public signatureURL = Urls.USER_SIGNATURES
 
+  //Default article
   public article: Article = {
     id: "1",
     photo: "default",
@@ -35,6 +37,7 @@ export class ArticleViewComponent {
       username: "default",
       email: "default",
       photo: "default",
+      signature: "default"
     }
 
   }
@@ -45,8 +48,10 @@ export class ArticleViewComponent {
   }
 
   ngOnInit() {
+    //Loads the article's information
     this.articleService.getArticle(this.activatedRoute.snapshot.params['id']).subscribe((article) => {
       this.article = article
+      console.log(article)
     })
 
 

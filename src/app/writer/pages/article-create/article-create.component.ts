@@ -23,7 +23,7 @@ export class ArticleCreateComponent {
     "title": ["", Validators.required],
     "description": ["", Validators.required],
     "readTime": ["", [Validators.required, Validators.pattern("[0-9]{1,2}")]],
-    "photo": ["", []],
+    "photo": ["", [Validators.required]],
     "editorContent": [null, Validators.required],
     "section": [null, [Validators.required, Validators.pattern("The Thought|Dear Fashion|Mucho más que anuncios")]],
   });
@@ -87,12 +87,12 @@ export class ArticleCreateComponent {
     })
   }
 
+
+  //getters
+
   getFile(event: any) {
     this.file = event.target.files[0]
-
-    console.log(this.file)
   }
-
 
   get title() {
     return this.createArticleForm.get('title') as FormControl

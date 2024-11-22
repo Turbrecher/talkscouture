@@ -43,6 +43,7 @@ export class UserEditComponent {
     this.id = this.activatedRoute.snapshot.params['id']
 
 
+    //gets the user that is going to be edited.
     this.userAdminService.getUser(this.activatedRoute.snapshot.params['id']).subscribe({
       next: (response) => {
         this.name.setValue(response.user.name)
@@ -58,6 +59,7 @@ export class UserEditComponent {
 
   }
 
+  //Function that edits an user
   editUser($event: Event) {
     $event.preventDefault()
 
@@ -81,6 +83,7 @@ export class UserEditComponent {
   }
 
 
+  //Function that deletes an user
   deleteUser(event: Event) {
     event.preventDefault()
 
@@ -101,8 +104,7 @@ export class UserEditComponent {
 
 
 
-
-
+  //getters
   get email() {
     return this.userForm.get("email") as FormControl
   }

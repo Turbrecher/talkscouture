@@ -15,18 +15,16 @@ import { UserCardComponent } from '../../components/user-card/user-card.componen
 export class UserListComponent {
 
   users: Array<any> = []
-  public imgURL = Urls.IMAGES
+  public imgURL = Urls.ARTICLE_IMAGES
 
   constructor(private userAdminService: UserAdminService, private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-
-    
-
     this.users = []
 
+    //gets all users.
     this.userAdminService.listUsers().subscribe({
       next: (response) => {
 

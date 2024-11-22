@@ -13,12 +13,10 @@ import { Urls } from '../../../shared/urls/urls';
   styleUrl: './inicio.component.sass'
 })
 export class InicioComponent {
-  public nArticles = [1, 2, 3, 4, 5, 6]
-  public nArticlesUnordered = [1, 2, 3, 4, 5]
+
   public topArticles!: Array<Article>
   public allArticles!: Array<Article>
-
-  public imgURL = Urls.IMAGES
+  public imgURL = Urls.ARTICLE_IMAGES
 
 
 
@@ -35,10 +33,12 @@ export class InicioComponent {
       behavior: 'smooth'
     })
 
+    //Gets 6 articles to show on the 2 column grid.
     this.articleService.getAllArticlesOnPage(2).subscribe((articles) => {
       this.topArticles = articles.data
     })
 
+    //Gets 6 articles to show on the 1 column grid.
     this.articleService.getAllArticlesOnPage(3).subscribe((articles) => {
       this.allArticles = articles.data
     })

@@ -14,31 +14,37 @@ const routes: Routes = [
     component: AdminHubComponent,
     children: [
       {
+        //list articles
         path: "articles/list",
         component: ArticleListComponent
       },
 
       {
+        //create new article
         path: "articles/create",
         component: ArticleCreateComponent
       },
 
       {
+        //edit existing article
         path: "articles/edit/:id",
         component: ArticleEditComponent
       },
 
       {
+        //list users
         path: "users/list",
         component: UserListComponent
       },
 
       {
+        //create new user
         path: "users/create",
         component: UserCreateComponent
       },
 
       {
+        //edit an existing user
         path: "users/edit/:id",
         component: UserEditComponent
       },

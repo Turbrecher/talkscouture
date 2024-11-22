@@ -18,12 +18,14 @@ export class ProfileComponent {
     "surname": ["", Validators.required],
     "username": ["", Validators.required],
     "email": ["", Validators.required],
+    "signature": ["", []],
     "password": ["", []],
 
   });
 
 
-  private id: String = "0"
+  private id: string = "0"
+  private file: any = " "
 
   constructor(private fb: FormBuilder, private authenticationService: AuthenticationService) {
 
@@ -37,6 +39,7 @@ export class ProfileComponent {
     })
 
 
+    //gets profile info
     this.authenticationService.profile().subscribe({
       next: (response) => {
         this.name.setValue(response.user.name)
@@ -53,18 +56,38 @@ export class ProfileComponent {
 
   }
 
+
+  //Function that edits the user's profile
   editProfile($event: Event) {
     $event.preventDefault()
+
+    let user = new FormData()
+    user.append('id',this.id)
+    user.append('name',this.name.value)
+    user.append('surname',this.surname.value)
+    user.append('username',this.username.value)
+    user.append('email',this.email.value)
+    user.append('_method','PUT')
+
+    //Only add password if user has written it.
+    if(this.password.value != ""){
+      user.append('password',this.password.value)
+    }else{
+      user.append('password'," ")
+    }
+
+    //Only add signature file if the user has added it
+    if(this.file != " "){
+      user.append('signature', this.file, this.file.name)
+    }
+
+
+
+    //Edits the user
     this.authenticationService.editUser(
-      this.name.value,
-      this.surname.value,
-      this.username.value,
-      this.email.value,
-      this.password.value,
-      this.id
+      user
     ).subscribe({
       next: (response) => {
-        console.log(response)
         this.ngOnInit()
       },
       error: (err) => {
@@ -74,6 +97,10 @@ export class ProfileComponent {
   }
 
 
+  //getters
+  getFile(event: any) {
+    this.file = event.target.files[0]
+  }
 
   get email() {
     return this.profileForm.get("email") as FormControl
@@ -93,5 +120,9 @@ export class ProfileComponent {
 
   get username() {
     return this.profileForm.get("username") as FormControl
+  }
+
+  get signature() {
+    return this.profileForm.get("signature") as FormControl
   }
 }

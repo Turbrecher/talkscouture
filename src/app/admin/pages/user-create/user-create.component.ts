@@ -43,6 +43,8 @@ export class UserCreateComponent {
 
   }
 
+
+  //Function that creates an user
   createUser($event: Event) {
     $event.preventDefault()
 
@@ -69,6 +71,7 @@ export class UserCreateComponent {
 
 
 
+  //getters
   get email() {
     return this.userForm.get("email") as FormControl
   }

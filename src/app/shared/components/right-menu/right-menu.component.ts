@@ -4,6 +4,7 @@ import { LoginDialogComponent } from "../../../public/components/login-dialog/lo
 import { RegisterDialogComponent } from '../../../public/components/register-dialog/register-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../../../public/services/authentication.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-right-menu',
@@ -13,23 +14,29 @@ import { AuthenticationService } from '../../../public/services/authentication.s
   styleUrl: './right-menu.component.sass'
 })
 export class RightMenuComponent {
+
   public isAuthenticated: boolean = false
   public isWriter: boolean = false
   public isAdmin: boolean = false
-  @ViewChild(LoginDialogComponent) loginDialog!: LoginDialogComponent;
-  @ViewChild(RegisterDialogComponent) registerDialog!: RegisterDialogComponent;
 
-  openLoginDialog() {
-    this.loginDialog.openDialog()
-  }
-
-  openRegisterDialog() {
-    this.registerDialog.openDialog()
-  }
+  @ViewChild(LoginDialogComponent) loginDialog!: LoginDialogComponent;//LoginBox modal
+  @ViewChild(RegisterDialogComponent) registerDialog!: RegisterDialogComponent;//RegisterBox modal
 
   constructor(private cookieService: CookieService, private authenticationService: AuthenticationService, private router: Router) {
 
   }
+
+  //Function that opens the login dialog box (which is a child of this component)
+  openLoginDialog() {
+    this.loginDialog.openDialog()
+  }
+
+  //Function that opens the register dialog box (which is a child of this component)
+  openRegisterDialog() {
+    this.registerDialog.openDialog()
+  }
+
+
 
 
   ngOnInit() {
@@ -63,8 +70,10 @@ export class RightMenuComponent {
 
         },
         error: (err) => {
-          this.cookieService.set('token', "", -1000)
-          this.ngOnInit()
+          this.deleteToken("a").subscribe(() => {
+            location.reload()
+          })
+
         }
       }
     )
@@ -74,17 +83,28 @@ export class RightMenuComponent {
 
 
 
+  //Function that deletes auth token and returns an observable.
+  deleteToken(token: string) {
+    this.cookieService.set('token', "", -1000);
 
+    return of(token);
+  }
+
+
+
+
+  //Function that log outs the current user
   logout() {
-    const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
-
 
     this.authenticationService.logout().subscribe({
       next: async (response) => {
-        this.cookieService.set("token", "", -1000);
+        this.deleteToken("a").subscribe({
+          next: () => {
+            this.ngOnInit()
+            this.router.navigate(['inicio'])
+          }
+        })
 
-        await delay(2000)
-        location.reload()
 
       },
       error: (err) => { alert(err.message) },

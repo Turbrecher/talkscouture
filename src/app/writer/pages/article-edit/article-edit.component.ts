@@ -52,6 +52,7 @@ export class ArticleEditComponent {
     this.editor = new Editor()
     this.id = this.activatedRoute.snapshot.params['id']
 
+    //Gets the article that is going to be edited
     this.articleService.getArticle(this.id).subscribe({
       next: (response) => {
         this.title.setValue(response.title)
@@ -77,7 +78,7 @@ export class ArticleEditComponent {
 
   }
 
-  //Function that edit an article
+  //Function that edits an article
   editArticle(event: Event) {
     event.preventDefault()
 
@@ -139,10 +140,10 @@ export class ArticleEditComponent {
   }
 
 
+  //getters
   getFile(event: any) {
     this.file = event.target.files[0]
 
-    console.log(this.file)
   }
 
   get title() {

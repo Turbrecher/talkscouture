@@ -14,7 +14,7 @@ import { Urls } from '../../../shared/urls/urls';
 })
 export class ArticleListComponent {
   articles: Array<any> = []
-  public imgURL = Urls.IMAGES
+  public imgURL = Urls.ARTICLE_IMAGES
 
   constructor(private writerService: WriterService, private activatedRoute: ActivatedRoute) {
 
@@ -22,15 +22,12 @@ export class ArticleListComponent {
 
   ngOnInit() {
 
-    
-
     this.articles = []
     let page = this.activatedRoute.snapshot.params["page"]
 
+    //gets all writer articles
     this.writerService.listMyArticles(page).subscribe({
       next: (response) => {
-
-        console.log(response)
 
         //LOADING ARTICLES
         response.forEach((article: any) => {

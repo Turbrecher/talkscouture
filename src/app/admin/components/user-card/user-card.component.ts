@@ -8,6 +8,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user-card.component.sass'
 })
 export class UserCardComponent {
+
+  //All inputs the user card can receive.
   @Input() id: string = "1"
   @Input() photo: string = "usuario.png"
   @Input() name: string = "Nombre"

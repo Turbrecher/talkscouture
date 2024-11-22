@@ -53,6 +53,7 @@ export class ArticleEditComponent {
     this.editor = new Editor()
     this.id = this.activatedRoute.snapshot.params['id']
 
+    //gets the article that will be edited.
     this.articleService.getArticle(this.id).subscribe({
       next: (response) => {
         this.title.setValue(response.title)
@@ -78,7 +79,7 @@ export class ArticleEditComponent {
 
   }
 
-  //Function that edit an article
+  //Function that edits an article
   editArticle(event: Event) {
     event.preventDefault()
 
@@ -98,7 +99,6 @@ export class ArticleEditComponent {
     this.articleAdminService.editArticle(formData).subscribe({
       next: (response) => {
         this.router.navigate(['/admin/articles/list'])
-        console.log(response)
       },
       error: (err) => {
         console.log(err)
@@ -115,7 +115,6 @@ export class ArticleEditComponent {
     if(confirm("¿Estás seguro/a?")){
       this.articleAdminService.deleteArticle(this.id).subscribe({
         next: (response) => {
-          console.log(response)
           this.router.navigate(['/admin/articles/list'])
         },
         error: (err)=>{
@@ -126,10 +125,9 @@ export class ArticleEditComponent {
   }
 
 
+  //getters
   getFile(event: any) {
     this.file = event.target.files[0]
-
-    console.log(this.file)
   }
 
   get title() {

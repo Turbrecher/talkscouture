@@ -32,7 +32,13 @@
     </section>
 
     <section class="firma">
-        <img src="images/firma.png" alt="">
+        @if(this.article.writer.signature == null){
+            <img src="images/firma.png" alt="">
+        }@else {
+            <img src="{{this.signatureURL}}{{this.article.writer.signature}}" alt="">
+        }
+
+        
     </section>
 
     

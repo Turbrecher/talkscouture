@@ -13,31 +13,37 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {
+    //Home path
     path: "inicio",
     component: InicioComponent
   },
 
   {
+    //The Thought section
     path: "thethought",
     component: TheThoughtComponent
   },
 
   {
+    //Dear Fashion section
     path: "dearfashion",
     component: DearFashionComponent
   },
 
   {
+    //Mucho más que anuncios section
     path: "muchomasqueanuncios",
     component: MuchoMasQueAnunciosComponent
   },
 
   {
+    //User profile view
     path: "profile",
     component: ProfileComponent
   },
 
   {
+    //Article view
     path: "articles/:id",
     component: ArticleViewComponent
   },
