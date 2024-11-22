@@ -8,7 +8,8 @@
         <app-input [valid]="email.valid||email.pristine" formControlName="email" label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
         <app-role-select formControlName="role" role1="user" role1Name="Usuario" role2="writer" role2Name="Escritor" label="Rol"></app-role-select>
         
-        <app-button [valid]="userForm.valid" (click)="editUser($event)" buttonValue="Editar perfil"/>
+        <app-button [valid]="userForm.valid" (click)="editUser($event)" buttonValue="Editar usuario"/>
+        <app-button extraClass="delete" [valid]="userForm.valid" (click)="deleteUser($event)" buttonValue="Eliminar usuario"/>
     </form>
 
     

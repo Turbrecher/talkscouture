@@ -7,9 +7,6 @@
 
         <form [formGroup]="registerForm">
             <h1>Registrarse</h1>
-            <app-input [valid]="name.valid||name.pristine" formControlName="name" label="Nombre" inputPlaceholder="Ingrese su nombre" inputType="text" />
-            <app-input [valid]="surname.valid||surname.pristine" formControlName="surname" label="Apellido/s" inputPlaceholder="Ingrese sus apellidos" inputType="text" />
-            <app-input [valid]="username.valid||username.pristine" formControlName="username" label="Nombre de usuario" inputPlaceholder="Ingrese su nombre de usuario" inputType="text" />
             <app-input [valid]="email.valid||email.pristine" formControlName="email" label="E-mail" inputPlaceholder="Ingrese su correo electrónico" inputType="email" />
             <app-input [valid]="password.valid||password.pristine" formControlName="password" label="Contraseña" inputPlaceholder="Ingrese su contraseña" inputType="password" />
             <app-button [valid]="registerForm.valid" (click)="register($event)" buttonValue="Registrarse"/>

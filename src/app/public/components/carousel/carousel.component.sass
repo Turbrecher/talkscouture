@@ -1,10 +1,13 @@
+$lg: 998px
+    
+    
 .carousel
         display: grid
         align-items: center
         gap: 1rem
         .images
             display: grid
-            grid-template-columns: repeat(8,33%)
+            grid-template-columns: repeat(6,33%)
             overflow: hidden
             width: 100%
             gap: 1rem
@@ -68,3 +71,13 @@
                     scale: 130%
                     color: #9C1726
 
+
+
+@media (width<998px)
+    .carousel
+        .images
+            grid-template-columns: repeat(6,100%)                
+                        
+        .control
+            button
+                font-size: 8rem

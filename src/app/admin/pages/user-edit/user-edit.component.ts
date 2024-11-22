@@ -44,13 +44,12 @@ export class UserEditComponent {
 
 
     this.userAdminService.getUser(this.activatedRoute.snapshot.params['id']).subscribe({
-      next: (user) => {
-        console.log(user)
-        this.name.setValue(user.name)
-        this.surname.setValue(user.surname)
-        this.username.setValue(user.username)
-        this.email.setValue(user.email)
-        this.role.setValue(user.role)
+      next: (response) => {
+        this.name.setValue(response.user.name)
+        this.surname.setValue(response.user.surname)
+        this.username.setValue(response.user.username)
+        this.email.setValue(response.user.email)
+        this.role.setValue(response.role.name)
       },
       error: (err) => {
 
@@ -72,7 +71,7 @@ export class UserEditComponent {
 
     this.userAdminService.editUser(user, this.id).subscribe({
       next: (response) => {
-        console.log(response)
+
         this.router.navigate(['/admin/users/list'])
       },
       error: (err) => {
@@ -80,6 +79,27 @@ export class UserEditComponent {
       },
     })
   }
+
+
+  deleteUser(event: Event) {
+    event.preventDefault()
+
+
+    if (confirm("¿Estás seguro/a?")) {
+
+      this.userAdminService.deleteUser(this.id).subscribe({
+        next: (response) => {
+          this.router.navigate(['/admin/users/list'])
+        },
+        error: (err) => {
+
+        }
+      })
+
+    }
+  }
+
+
 
 
 

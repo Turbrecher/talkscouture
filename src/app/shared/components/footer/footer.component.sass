@@ -1,3 +1,6 @@
+
+$lg:998px    
+    
 footer
     display: flex
     border-top: solid black 1px
@@ -5,3 +8,13 @@ footer
     margin: 0 auto
     padding: 1.5rem 0
     width: 80%
+
+
+@media (width<$lg)
+    footer
+        display: grid
+        row-gap: 2rem
+        text-align: center
+        justify-content: center
+        padding: 1.5rem 0
+        font-size: 2rem

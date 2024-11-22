@@ -51,12 +51,12 @@ export class UserAdminService {
 
 
   //Function that deletes an user.
-  deleteUser(user: any) {
+  deleteUser(id: string) {
     let headers = {
       "Authorization": "Bearer " + this.cookieService.get("token"),
     }
 
 
-    return this.http.delete<any>(this.URL + "users/:id", { headers })
+    return this.http.delete<any>(this.URL + "users/"+id, { headers })
   }
 }

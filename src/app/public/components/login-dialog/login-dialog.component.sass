@@ -1,3 +1,5 @@
+$lg:998px
+    
 .loginDialog
     width: 50%
     margin: 0 auto
@@ -37,4 +39,21 @@
             transition: opacity 1s ease
             @starting-style
                 opacity: 0
+
+
+@media (width<$lg)
+    .loginDialog
+        width: 100%
+
+        .closeButton
+            position: relative
+            top: 0
+            left: 0
+            transform: translate(0,0)
+            width: 10%
+            
+                
+
+        .dialog
+            width: 100%
 

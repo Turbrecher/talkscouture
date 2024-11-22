@@ -1,3 +1,6 @@
+$lg:998px  
+    
+    
 a
     text-decoration: none
     color: black
@@ -63,3 +66,19 @@ a
 
 
 
+@media (width<$lg)
+    .extraArticle
+        grid-template-columns: 30% auto
+        align-items: center
+
+        .content
+            display: grid
+            
+            .title
+                font-size: 1rem
+
+            .date
+                color: #9C1726
+
+            .readTime
+               font-size: 1rem

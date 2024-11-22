@@ -56,17 +56,10 @@ export class AuthenticationService {
 
   }
 
-  register(name: String, surname: String, username: String, email: String, password: String) {
+  register(user:any) {
     let headers = {}
-    let params = {
-      "email": email,
-      "password": password,
-      "name": name,
-      "surname": surname,
-      "username": username,
-    }
 
-    return this.http.post<any>(this.URL + "register", params, { headers })
+    return this.http.post<any>(this.URL + "register", user, { headers })
   }
 
 

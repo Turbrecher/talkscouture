@@ -1,3 +1,6 @@
+$lg: 998px
+
+
 nav
         display: flex
         flex-wrap: wrap
@@ -17,3 +20,8 @@ nav
             &:hover
                 color: #9C1726
                 border-bottom: solid #9C1726 1px
+
+@media (width<$lg)
+    nav
+        display: flex
+        justify-content: center

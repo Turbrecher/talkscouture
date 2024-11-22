@@ -51,14 +51,15 @@ export class UserCreateComponent {
       surname: this.surname.value,
       username: this.username.value,
       email: this.email.value,
-      password: this.email.value,
+      password: this.password.value,
       role: this.role.value
     }
 
+
     this.userAdminService.createUser(user).subscribe({
       next: (response) => {
-        console.log(response)
-        //this.router.navigate(['/admin/users/list'])
+
+        this.router.navigate(['/admin/users/list'])
       },
       error: (err) => {
 

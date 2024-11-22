@@ -18,9 +18,6 @@ export class RegisterDialogComponent {
   registerForm: FormGroup = this.fb.group({
     "email": ["", Validators.required],
     "password": ["", Validators.required],
-    "name": ["", Validators.required],
-    "surname": ["", Validators.required],
-    "username": ["", Validators.required],
 
   });
 
@@ -43,13 +40,13 @@ export class RegisterDialogComponent {
 
   register($event: Event) {
     $event.preventDefault()
-    this.authenticationService.register(
-      this.name.value,
-      this.surname.value,
-      this.username.value,
-      this.email.value,
-      this.password.value,
-    ).subscribe({
+
+    let user = {
+      email: this.email.value,
+      password: this.password.value,
+    }
+
+    this.authenticationService.register(user).subscribe({
       next: (response) => {
         this.closeDialog()
       },

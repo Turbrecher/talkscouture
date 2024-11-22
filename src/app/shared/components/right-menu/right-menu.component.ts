@@ -41,7 +41,7 @@ export class RightMenuComponent {
     }
 
 
-    if(!this.isAuthenticated){
+    if (!this.isAuthenticated) {
       return
     }
 
@@ -63,7 +63,7 @@ export class RightMenuComponent {
 
         },
         error: (err) => {
-          this.cookieService.set('token',"",-1000)
+          this.cookieService.set('token', "", -1000)
           this.ngOnInit()
         }
       }
@@ -73,19 +73,17 @@ export class RightMenuComponent {
   }
 
 
+
+
   logout() {
+    const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 
 
     this.authenticationService.logout().subscribe({
-      next: (response) => {
+      next: async (response) => {
         this.cookieService.set("token", "", -1000);
 
-        //We pause 1 second to make sure the cookie gets erased.
-        setTimeout(()=>{}, 1000);
-        this.ngOnInit();
-        setTimeout(()=>{}, 1000);
-        this.router.navigate(['inicio'])
-        setTimeout(()=>{}, 1000);
+        await delay(2000)
         location.reload()
 
       },

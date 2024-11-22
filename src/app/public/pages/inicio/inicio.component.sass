@@ -1,3 +1,5 @@
+$lg:998px
+    
 .inicio
     margin: 5rem auto   
 
@@ -22,3 +24,15 @@
         gap: 3rem
         margin: 3rem auto
         justify-content: center
+
+@media (width<$lg)
+    .inicio
+
+        .topArticles
+            display: grid
+            grid-template-columns: repeat(1,100%)
+            justify-content: center
+
+        .extraArticles
+            display: grid
+            grid-template-columns: auto
