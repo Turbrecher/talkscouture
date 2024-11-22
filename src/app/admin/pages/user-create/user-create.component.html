@@ -1,7 +1,7 @@
 <article class="userCreate">
 
     <form class="userForm" [formGroup]="userForm">
-        <h1>Información del perfil</h1>
+        <h1>Creación de nuevo usuario</h1>
         <app-input [valid]="name.valid||name.pristine" formControlName="name" label="Nombre" inputPlaceholder="Ingrese su nombre" inputType="text" />
         <app-input [valid]="surname.valid||surname.pristine" formControlName="surname" label="Apellido/s" inputPlaceholder="Ingrese sus apellidos" inputType="text" />
         <app-input [valid]="username.valid||username.pristine" formControlName="username" label="Nombre de usuario" inputPlaceholder="Ingrese su nombre de usuario" inputType="text" />

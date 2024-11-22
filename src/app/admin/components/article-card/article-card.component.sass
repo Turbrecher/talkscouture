@@ -1,3 +1,6 @@
+$lg:992px
+
+
 .adminArticle
     display: grid
     grid-template-columns: 10% 90%
@@ -24,3 +27,14 @@
             font-style: italic
         .date
             color: #9C1726
+
+@media (width < 992px)
+    .adminArticle
+        display: grid
+        grid-template-columns: 30% 70%
+        align-items: center
+        .content
+            .title
+                font-size: 1.25rem
+            .readTime
+                font-size: 1rem

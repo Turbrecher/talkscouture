@@ -1,3 +1,5 @@
+$lg: 992px
+
 .writerArticle
     display: grid
     grid-template-columns: 10% 90%
@@ -29,3 +31,14 @@
             max-height: 200px
             overflow: hidden
             text-align: justify
+
+@media (width < 992px)
+    .writerArticle
+        display: grid
+        grid-template-columns: 30% 70%
+        align-items: center
+        .content
+            .title
+                font-size: 1.25rem
+            .readTime
+                font-size: 1rem

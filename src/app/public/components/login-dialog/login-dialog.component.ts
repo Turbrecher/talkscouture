@@ -44,9 +44,16 @@ export class LoginDialogComponent {
   login($event: Event) {
     $event.preventDefault()
 
+    const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
+
     this.authenticationService.login(this.email.value, this.password.value).subscribe({
-      next: (response) => {
+      next: async (response) => {
+        this.cookieService.set("token", "", -1000)
+        await delay(1000)
+
         this.cookieService.set("token", response.token)
+        await delay(2000)
+
         location.reload()
       },
       error: (err) => {

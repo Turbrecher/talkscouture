@@ -1,3 +1,5 @@
+$lg:992px
+
 .user
     display: grid
     grid-template-columns: 10% 90%
@@ -25,5 +27,16 @@
         .username
             color: #9C1726
 
-        
+@media (width < 992px)
+    .user
+        display: grid
+        grid-template-columns: 30% 70%
+        align-items: center
+        .content
+            .name, .surname
+                font-size: 1.25rem
+            .email
+                font-size: 1rem
+                word-wrap: break-word
+                overflow: auto
 
