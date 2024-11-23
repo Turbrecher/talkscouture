@@ -27,7 +27,7 @@ export class WriterService {
   //Function that creates an article.
   createArticle(article: any) {
     let headers = {
-      "Authorization": "Bearer " + this.cookieService.get("token"), 
+      "Authorization": "Bearer " + this.cookieService.get("token"), "Access-Control-Allow-Origin": "*"
     }
 
 

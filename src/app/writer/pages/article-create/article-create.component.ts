@@ -81,11 +81,6 @@ export class ArticleCreateComponent {
     formData.append('thumbnail', this.thumbnailFile, this.thumbnailFile.name)
 
 
-    console.log(formData)
-
-
-    return
-
     this.writerService.createArticle(formData).subscribe({
       next: (response) => {
         console.log(response)
