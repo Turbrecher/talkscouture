@@ -4,14 +4,27 @@
 
     <form enctype="multipart/form-data" [formGroup]="editArticleForm">
 
-        <app-input [valid]="title.valid||title.pristine" formControlName="title" label="Título" inputPlaceholder="Ingrese el título del artículo"
-            inputType="text" />
-        <app-input [valid]="description.valid||description.pristine" formControlName="description" label="Descripción" inputPlaceholder="Ingrese el título del artículo"
-            inputType="text" />
-        <app-input [valid]="readTime.valid||readTime.pristine" formControlName="readTime" label="Tiempo de lectura (minutos)"
-            inputPlaceholder="Ingrese el título del artículo" inputType="number" />
-        <app-input (change)="getFile($event)" [valid]="photo.valid||photo.pristine" formControlName="photo" label="Portada (Imagen)" inputPlaceholder="Ingrese el título del artículo"
-            inputType="file" />
+        <app-input [valid]="title.valid||title.pristine" formControlName="title" label="Título"
+            inputPlaceholder="Ingrese el título del artículo" inputType="text" />
+
+
+        <app-input formControlName="short_title" label="Título de portada"
+            inputPlaceholder="Ingrese el título de portada" inputType="text"
+            [valid]="short_title.valid || short_title.pristine" />
+
+        <app-input [valid]="description.valid||description.pristine" formControlName="description" label="Descripción"
+            inputPlaceholder="Ingrese la descripción del artículo" inputType="text" />
+
+        <app-input [valid]="readTime.valid||readTime.pristine" formControlName="readTime"
+            label="Tiempo de lectura (minutos)" inputPlaceholder="Ingrese el título del artículo" inputType="number" />
+
+        <app-input (change)="getHeaderPhoto($event)" formControlName="headerPhoto" label="Foto encabezado (Imagen)"
+            inputPlaceholder="Ingrese la foto que se verá en el artículo" inputType="file"
+            [valid]="headerPhoto.valid || headerPhoto.pristine" />
+
+        <app-input (change)="getThumbanil($event)" formControlName="thumbnail" label="Portada (Imagen)"
+            inputPlaceholder="Ingrese la portada del artículo" inputType="file"
+            [valid]="thumbnail.valid || thumbnail.pristine" />
 
         <app-section-select formControlName="section" section1="The Thought" section2="Dear Fashion"
             section3="Mucho más que anuncios" label="Sección" />

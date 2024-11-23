@@ -20,11 +20,13 @@ export class ArticleCreateComponent {
 
   createArticleForm: FormGroup = this.fb.group({
     "title": ["", Validators.required],
+    "short_title": ["", Validators.required],
     "description": ["", Validators.required],
     "readTime": ["", [Validators.required, Validators.pattern("[0-9]{1,2}")]],
-    "photo": ["", [Validators.required]],
     "editorContent": [null, Validators.required],
     "section": [null, [Validators.required, Validators.pattern("The Thought|Dear Fashion|Mucho más que anuncios")]],
+    "headerPhoto": ["", [Validators.required]],
+    "thumbnail": ["", [Validators.required]],
   });
 
   editor !: Editor
@@ -44,7 +46,8 @@ export class ArticleCreateComponent {
     this.html = '';
   }
 
-  private file: any = " "
+  private headerPhotoFile: any = " "
+  private thumbnailFile: any = " "
 
   constructor(private fb: FormBuilder, private adminArticleService: ArticleAdminService, private router: Router) {
 
@@ -66,11 +69,13 @@ export class ArticleCreateComponent {
     let formData = new FormData()
 
     formData.append('title', this.title.value)
+    formData.append('short_title', this.short_title.value)
     formData.append('description', this.description.value)
     formData.append('readTime', this.readTime.value)
     formData.append('content', this.editorContent.value)
     formData.append('section', this.section.value)
-    formData.append('photo', this.file, this.file.name)
+    formData.append('headerPhoto', this.headerPhotoFile, this.headerPhotoFile.name)
+    formData.append('thumbnail', this.thumbnailFile, this.thumbnailFile.name)
 
     this.adminArticleService.createArticle(formData).subscribe({
       next: (response) => {
@@ -84,20 +89,32 @@ export class ArticleCreateComponent {
   }
 
   //getters
-  getFile(event: any) {
-    this.file = event.target.files[0]
+  getHeaderPhoto(event: any) {
+    this.headerPhotoFile = event.target.files[0]
+  }
+
+  getThumbanil(event: any) {
+    this.thumbnailFile = event.target.files[0]
   }
 
   get title() {
     return this.createArticleForm.get('title') as FormControl
   }
 
+  get short_title() {
+    return this.createArticleForm.get('short_title') as FormControl
+  }
+
   get description() {
     return this.createArticleForm.get('description') as FormControl
   }
 
-  get photo() {
-    return this.createArticleForm.get('photo') as FormControl
+  get headerPhoto() {
+    return this.createArticleForm.get('headerPhoto') as FormControl
+  }
+
+  get thumbnail() {
+    return this.createArticleForm.get('thumbnail') as FormControl
   }
 
   get readTime() {

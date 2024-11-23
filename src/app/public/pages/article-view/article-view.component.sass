@@ -4,7 +4,9 @@
         height: 500px
         overflow: hidden
         img
+            object-fit: fill
             width: 100%
+            //height: 100%
 
     .date, .section
         color: #9C1726
@@ -19,6 +21,7 @@
         
 
     .title
+        width: 75%
         margin: 1rem 0
         font-size: 3rem
         h1
@@ -28,10 +31,36 @@
     .content
         width: 75%
         p
+            justify-content: left
             text-align: justify
+            align-items: center
             margin: 2rem 0
             font-size: 1.25rem
             line-height: 2rem
+            
+
+        h6
+            display: flex
+            gap: 1rem
+            font-family: 'raleway', serif
+            font-weight: lighter
+            justify-content: left
+            text-align: justify
+            align-items: start
+            margin: 2rem 0
+            font-size: 1.25rem
+            line-height: 2rem
+
+            p
+                
+            img
+                object-fit: contain
+            
+
+
+        strong, u
+            font-family: 'bodoniflf', serif
+            font-size: 1.5rem
 
     .firma
         width: 10%   
@@ -69,11 +98,22 @@ $lg:992px
 
         .content
             width: 100%
+
             p
                 text-align: justify
                 margin: 2rem 0
                 font-size: 1.1rem
                 line-height: 2rem
+            h6
+                display: grid
+                font-size: 1.1rem
+
+                img
+                    object-fit: contain
+                    margin: 0 auto
+                    width: 100%
+
+
 
         .firma
             width: 20%   

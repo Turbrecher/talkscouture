@@ -5,6 +5,7 @@ import { NavComponent } from "./shared/components/nav/nav.component";
 import { RightMenuComponent } from "./shared/components/right-menu/right-menu.component";
 import { HeaderComponent } from "./shared/components/header/header.component";
 import { FooterComponent } from "./shared/components/footer/footer.component";
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-root',

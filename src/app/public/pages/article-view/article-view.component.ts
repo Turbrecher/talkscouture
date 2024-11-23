@@ -20,7 +20,8 @@ export class ArticleViewComponent {
   //Default article
   public article: Article = {
     id: "1",
-    photo: "default",
+    headerPhoto: "default",
+    thumbnail: "default",
     title: "default",
     subtitle: "default",
     description: "default",
@@ -51,7 +52,6 @@ export class ArticleViewComponent {
     //Loads the article's information
     this.articleService.getArticle(this.activatedRoute.snapshot.params['id']).subscribe((article) => {
       this.article = article
-      console.log(article)
     })
 
 

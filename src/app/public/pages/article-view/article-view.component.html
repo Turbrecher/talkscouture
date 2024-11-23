@@ -1,7 +1,7 @@
 <article class="articleView">
 
     <section class="photo">
-        <img src="{{imgURL}}{{article.photo}}" alt="Portrait photo">
+        <img src="{{imgURL}}{{article.headerPhoto}}" alt="Portrait photo">
     </section>
 
     <section class="date">
@@ -22,7 +22,7 @@
     </section>
 
     <section class="title">
-        <h1>{{article.title}}.</h1>
+        <h1>{{article.title}}</h1>
     </section>
 
     <section class="content" [innerHTML]="article.content">

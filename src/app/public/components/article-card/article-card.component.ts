@@ -1,10 +1,11 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-article-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,NgOptimizedImage],
   templateUrl: './article-card.component.html',
   styleUrl: './article-card.component.sass'
 })

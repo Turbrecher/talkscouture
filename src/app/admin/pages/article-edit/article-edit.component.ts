@@ -18,16 +18,19 @@ import { ButtonComponent } from "../../../shared/components/formComponents/butto
 })
 export class ArticleEditComponent {
 
-  private file: any = " "
+  private headerPhotoFile: any = " "
+  private thumbnailFile: any = " "
 
   id: string = "1"
   editArticleForm: FormGroup = this.fb.group({
     "title": ["", Validators.required],
+    "short_title": ["", Validators.required],
     "description": ["", Validators.required],
     "readTime": ["", [Validators.required, Validators.pattern("[0-9]{1,2}")]],
-    "photo": ["", []],
     "editorContent": [null, Validators.required],
     "section": [null, [Validators.required, Validators.pattern("The Thought|Dear Fashion|Mucho más que anuncios")]],
+    "headerPhoto": ["", []],
+    "thumbnail": ["", []],
   });
 
   editor !: Editor
@@ -57,6 +60,7 @@ export class ArticleEditComponent {
     this.articleService.getArticle(this.id).subscribe({
       next: (response) => {
         this.title.setValue(response.title)
+        this.short_title.setValue(response.short_title)
         this.description.setValue(response.description)
         this.section.setValue(response.section)
         this.readTime.setValue(response.readTime)
@@ -86,14 +90,19 @@ export class ArticleEditComponent {
     let formData = new FormData()
 
     formData.append('title', this.title.value)
+    formData.append('short_title', this.short_title.value)
     formData.append('description', this.description.value)
     formData.append('readTime', this.readTime.value)
     formData.append('content', this.editorContent.value)
     formData.append('section', this.section.value)
     formData.append('id', this.id)
 
-    if (this.file != " ") {
-      formData.append('photo', this.file, this.file.name)
+    if (this.headerPhotoFile != " ") {
+      formData.append('headerPhoto', this.headerPhotoFile, this.headerPhotoFile.name)
+    }
+
+    if (this.thumbnailFile != " ") {
+      formData.append('thumbnail', this.thumbnailFile, this.thumbnailFile.name)
     }
 
     this.articleAdminService.editArticle(formData).subscribe({
@@ -112,12 +121,12 @@ export class ArticleEditComponent {
     event.preventDefault()
 
 
-    if(confirm("¿Estás seguro/a?")){
+    if (confirm("¿Estás seguro/a?")) {
       this.articleAdminService.deleteArticle(this.id).subscribe({
         next: (response) => {
           this.router.navigate(['/admin/articles/list'])
         },
-        error: (err)=>{
+        error: (err) => {
           console.log(err)
         }
       })
@@ -126,8 +135,12 @@ export class ArticleEditComponent {
 
 
   //getters
-  getFile(event: any) {
-    this.file = event.target.files[0]
+  getHeaderPhoto(event: any) {
+    this.headerPhotoFile = event.target.files[0]
+  }
+
+  getThumbanil(event: any) {
+    this.thumbnailFile = event.target.files[0]
   }
 
   get title() {
@@ -136,6 +149,18 @@ export class ArticleEditComponent {
 
   get description() {
     return this.editArticleForm.get('description') as FormControl
+  }
+
+  get short_title() {
+    return this.editArticleForm.get('short_title') as FormControl
+  }
+
+  get headerPhoto() {
+    return this.editArticleForm.get('headerPhoto') as FormControl
+  }
+
+  get thumbnail() {
+    return this.editArticleForm.get('thumbnail') as FormControl
   }
 
   get photo() {

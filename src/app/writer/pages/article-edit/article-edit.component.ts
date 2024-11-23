@@ -17,16 +17,19 @@ import { WriterService } from '../../services/writer.service';
 })
 export class ArticleEditComponent {
 
-  private file: any = " "
+  private headerPhotoFile: any = " "
+  private thumbnailFile: any = " "
 
   id: string = "1"
   editArticleForm: FormGroup = this.fb.group({
     "title": ["", Validators.required],
+    "short_title": ["", Validators.required],
     "description": ["", Validators.required],
     "readTime": ["", [Validators.required, Validators.pattern("[0-9]{1,2}")]],
-    "photo": ["", []],
     "editorContent": [null, Validators.required],
     "section": [null, [Validators.required, Validators.pattern("The Thought|Dear Fashion|Mucho más que anuncios")]],
+    "headerPhoto": ["", []],
+    "thumbnail": ["", []],
   });
 
   editor !: Editor
@@ -56,6 +59,7 @@ export class ArticleEditComponent {
     this.articleService.getArticle(this.id).subscribe({
       next: (response) => {
         this.title.setValue(response.title)
+        this.short_title.setValue(response.short_title)
         this.description.setValue(response.description)
         this.section.setValue(response.section)
         this.readTime.setValue(response.readTime)
@@ -82,20 +86,11 @@ export class ArticleEditComponent {
   editArticle(event: Event) {
     event.preventDefault()
 
-    let article = {
-      title: this.title.value,
-      description: this.description.value,
-      photo: this.file,
-      readTime: this.readTime.value,
-      content: this.editorContent.value,
-      section: this.section.value,
-      id: this.id
-    }
-
 
     let formData = new FormData()
 
     formData.append('title', this.title.value)
+    formData.append('short_title', this.short_title.value)
     formData.append('description', this.description.value)
     formData.append('readTime', this.readTime.value)
     formData.append('content', this.editorContent.value)
@@ -103,9 +98,14 @@ export class ArticleEditComponent {
     formData.append('id', this.id)
     
     
-    if(this.file != " "){
-      formData.append('photo', this.file, this.file.name)
+    if(this.headerPhotoFile != " "){
+      formData.append('headerPhoto', this.headerPhotoFile, this.headerPhotoFile.name)
     }
+
+    if(this.thumbnailFile != " "){
+      formData.append('thumbnail', this.thumbnailFile, this.thumbnailFile.name)
+    }
+
 
 
 
@@ -141,17 +141,32 @@ export class ArticleEditComponent {
 
 
   //getters
-  getFile(event: any) {
-    this.file = event.target.files[0]
+  getHeaderPhoto(event: any) {
+    this.headerPhotoFile = event.target.files[0]
+  }
 
+  getThumbanil(event: any) {
+    this.thumbnailFile = event.target.files[0]
   }
 
   get title() {
     return this.editArticleForm.get('title') as FormControl
   }
 
+  get short_title() {
+    return this.editArticleForm.get('short_title') as FormControl
+  }
+
   get description() {
     return this.editArticleForm.get('description') as FormControl
+  }
+
+  get headerPhoto() {
+    return this.editArticleForm.get('headerPhoto') as FormControl
+  }
+
+  get thumbnail() {
+    return this.editArticleForm.get('thumbnail') as FormControl
   }
 
   get photo() {

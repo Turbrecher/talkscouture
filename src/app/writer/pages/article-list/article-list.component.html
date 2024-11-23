@@ -6,7 +6,7 @@
     <section class="articles">
         @for (article of articles; track $index) {
         <a routerLink="/writer/articles/edit/{{article.id}}">
-            <app-article-card routerLink="/writer/articles/edit/{{article.id}}" photo="{{imgURL}}{{article.photo}}"
+            <app-article-card routerLink="/writer/articles/edit/{{article.id}}" photo="{{imgURL}}{{article.thumbnail}}"
                 title="{{article.title}}" description="{{article.description}}"
                 readTime="{{article.readTime}} minutos de lectura" date="{{article.date}}"></app-article-card>
         </a>

@@ -12,7 +12,7 @@
 
     <section class="topArticles">
         @for (article of topArticles; track $index) {
-        <app-article-card [id]="article.id" [title]="article.title" [description]="article.description" [photo]="imgURL+article.photo"
+        <app-article-card [id]="article.id" [title]="article.title" [description]="article.description" [photo]="imgURL+article.thumbnail"
             [readTime]="article.readTime" />
         }
     </section>
@@ -20,7 +20,7 @@
 
     <section class="extraArticles">
         @for (article of allArticles; track $index) {
-            <app-article-card [id]="article.id" [title]="article.title" [description]="article.description" [photo]="imgURL+article.photo"
+            <app-article-card [id]="article.id" [title]="article.title" [description]="article.description" [photo]="imgURL+article.thumbnail"
                 [readTime]="article.readTime" [extra]="true" />
             }
     </section>

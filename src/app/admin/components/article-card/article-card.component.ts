@@ -1,9 +1,10 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-article-card',
   standalone: true,
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './article-card.component.html',
   styleUrl: './article-card.component.sass'
 })
