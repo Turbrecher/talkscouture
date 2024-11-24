@@ -38,7 +38,7 @@ export class UserAdminService {
     }
 
 
-    return this.http.put<any>(this.URL + "users/" + id, user, { headers })
+    return this.http.post<any>(this.URL + "users/edit/" + id, user, { headers })
   }
 
   //Function that gets an user.

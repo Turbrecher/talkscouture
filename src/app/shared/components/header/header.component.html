@@ -1,11 +1,40 @@
-<header>
+<header class="pc">
 
-    <app-nav/>
-  
+  <app-nav />
+
+  <article class="title">
+    <h1>TALKS COUTURE</h1>
+  </article>
+
+  <app-right-menu />
+
+</header>
+
+
+
+<header class="mobile">
+
+
+  <article class="menu_title">
+    
+    <button (click)="toggleMenu($event)" class="menuButton">
+      <img src="images/menu.png" alt="">
+    </button>
+
     <article class="title">
       <h1>TALKS COUTURE</h1>
     </article>
   
-    <app-right-menu/>
+
+  </article>
+
   
-  </header>
+
+  <nav #menu class="hiddenMenu">
+    <app-nav />
+    <app-right-menu />
+  </nav>
+
+
+
+</header>

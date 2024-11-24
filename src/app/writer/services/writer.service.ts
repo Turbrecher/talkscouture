@@ -31,7 +31,7 @@ export class WriterService {
     }
 
 
-    return this.http.post<any>(this.URL + "articles/", article, { headers })
+    return this.http.post<any>(this.URL + "articles", article, { headers })
   }
 
 

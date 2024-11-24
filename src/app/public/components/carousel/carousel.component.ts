@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { Article } from '../../../shared/models/article';
 import { ArticleService } from '../../services/article.service';
 import { Urls } from '../../../shared/urls/urls';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-carousel',

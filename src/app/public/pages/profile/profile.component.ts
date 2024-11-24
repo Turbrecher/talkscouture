@@ -67,13 +67,10 @@ export class ProfileComponent {
     user.append('surname',this.surname.value)
     user.append('username',this.username.value)
     user.append('email',this.email.value)
-    user.append('_method','PUT')
 
     //Only add password if user has written it.
     if(this.password.value != ""){
       user.append('password',this.password.value)
-    }else{
-      user.append('password'," ")
     }
 
     //Only add signature file if the user has added it

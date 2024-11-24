@@ -68,7 +68,7 @@ export class UserEditComponent {
       surname: this.surname.value,
       username: this.username.value,
       email: this.email.value,
-      role: this.role.value
+      role: this.role.value,
     }
 
     this.userAdminService.editUser(user, this.id).subscribe({

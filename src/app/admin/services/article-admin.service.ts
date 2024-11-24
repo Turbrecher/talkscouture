@@ -28,7 +28,7 @@ export class ArticleAdminService {
     }
 
 
-    return this.http.post<any>(this.URL + "articles/", article, { headers })
+    return this.http.post<any>(this.URL + "articles", article, { headers })
   }
 
   //Function that creates an existing article.

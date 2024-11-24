@@ -1,5 +1,10 @@
 $lg: 998px
 
+.mobile
+    display: none
+.pc
+    display: grid
+
 header
     align-items: center
     background: white
@@ -19,15 +24,75 @@ header
             text-align: center
 
 @media (width<$lg)
+    .mobile
+        display: grid
+    .pc
+        display: none
+
     header
         position: relative
         display: grid
         grid-template-columns: auto
         justify-content: center
         align-items: center
-        .title
-            margin: 2rem auto
-            h1
-                font-family: "bodoniflf", serif
-                font-size: 3rem
-                text-align: center
+        position: sticky
+
+        .menu_title
+            padding: 0.5rem
+            display: grid
+            grid-template-columns: 10% 90%
+
+            .menuButton
+                position: relative
+                left: -1rem
+                background: none
+                border: none
+                width: 100%
+                img
+                    width: 80%
+
+            .title
+                margin: 0 auto
+                h1
+                    font-family: "bodoniflf", serif
+                    font-size: 2rem
+                    text-align: center
+
+
+        @keyframes fade-out 
+            0%
+                opacity: 1
+                grid-template-columns: 50% 50%
+                scale: 1
+                display: grid
+
+            100% 
+                opacity: 0
+                display: none
+                scale: 0
+
+
+        nav
+            display: grid
+            grid-template-columns: 50% 50%
+            align-items: end
+
+        .hiddenMenu
+            animation: fade-out
+            transition: scale 0.5s ease,opacity 0.5s ease, display 0.5s ease allow-discrete
+            opacity: 0
+            scale: 0
+            display: none
+            grid-template-columns: 50% 50%
+
+        .shownMenu
+            display: grid
+            align-items: end
+            grid-template-columns: 50% 50%
+            transition: scale 0.5s ease,opacity 0.5s ease, display 0.5s ease allow-discrete
+            opacity: 1
+            scale: 1
+
+            @starting-style
+                opacity: 0
+                scale: 0

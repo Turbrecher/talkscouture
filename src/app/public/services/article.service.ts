@@ -23,7 +23,12 @@ export class ArticleService {
 
   //Function that gets all articles of a page (each one consisting on 6 articles)
   getAllArticlesOnPage(page: number): Observable<any> {
-    return this.http.get<any>(this.URL + "articles/?page=" + page)
+    let headers = {
+      
+    }
+
+
+    return this.http.get<any>(this.URL + "articles/?page=" + page, {headers})
   }
 
   //Function that gets all articles of a certain section

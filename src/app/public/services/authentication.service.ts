@@ -38,7 +38,7 @@ export class AuthenticationService {
 
   
 
-    return this.http.post<any>(this.URL + "users/" + user.get('id'), user, { headers })
+    return this.http.post<any>(this.URL + "users/edit/" + user.get('id'), user, { headers })
 
   }
 
